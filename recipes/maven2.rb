@@ -1,8 +1,9 @@
 #
 # Cookbook Name:: maven
 # Recipe:: maven2
-#
-# Copyright 2011, Bryan W. Berry (<bryan.berry@gmail.com>)
+# Author:: Scott Chisamore (<scott@opscode.com>)
+# Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+# Copyright 2011, Opscode Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,15 +18,16 @@
 # limitations under the License.
 #
 
-include_recipe "java"
+include_recipe "ark"
+
 maven_home = node['maven']["m2_home"]
 
-java_ark "maven2" do
+ark "maven" do
   url node['maven']['2']['url']
   checksum node['maven']['2']['checksum']
-  app_home maven_home
-  bin_cmds ["mvn"]
-  action :install
+  version '2.2.1'
+  path maven_home
+  append_env_path true
 end
 
 template "/etc/mavenrc" do

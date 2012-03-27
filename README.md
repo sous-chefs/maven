@@ -1,7 +1,14 @@
 Description
 ===========
 
-Install and configure maven2 and maven3 from the binaries provided by the maven project
+Install and configure maven2 and maven3 from the binaries provided by
+the maven project
+
+Has `maven` LWRP for pulling a maven artifact from a maven repository and
+placing it in an arbitrary location.
+
+Has `maven_repo` LWRP that allows you to add your custom repo to the list
+of repos searched for artifacts
 
 Requirements
 ============
@@ -14,13 +21,13 @@ The following Opscode cookbooks are dependencies:
 
 * java - this cookbook not only depends on the java virtual machine
   but it also depends on the java_ark LWRP present in the java cookbooks
+* ark - used to unpack the maven tarball
 
 Attributes
 ==========
 
 * default['maven']['version']  defaults to 2
-* default['maven']['m2_home']  defaults to  '/usr/local/maven/', note
-that maven3 uses "m2_home" not "m3_home"
+* default['maven']['m2_home']  defaults to  '/usr/local/maven/'
 * default['maven']['m2_download_url']  the download url for maven2
 * default['maven']['m2_checksum']  the checksum, which you will have
  to recalculate if you change the download url
@@ -34,16 +41,44 @@ Usage
 
 Simply include the recipe where you want Apache Maven installed.
 
-TODO
-====
+
+Providers/Resources
+===================
+
+maven
+-----
+
+* artifactId: if this is not specified, the resource's name is used
+* groupId: groupId for the artifact
+* version: version of the artifact
+* dest: the destination folder for the jar and its dependencies
+* packaging: defaults to 'jar'
+* repositories: array of maven repositories to use, defaults to
+ ["http://repo1.maven.apache.org/maven2"]
+* owner: the owner of the resulting file, default is root
+* mode: integer value for file permissions, default is 0644
+
+
+# Examples
+
+    maven "mysql-connector-java" do
+      groupId "mysql"
+      version "5.1.18"
+      dest "/usr/local/tomcat/lib/"
+    end
+
+maven_repo
+----------
+TODO    
 
 
 License and Author
 ==================
 
+Author:: Scott Chisamore (<scott@opscode.com>)
 Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 
-Copyright 2011, Bryan W. Berry
+Copyright 2010, Opscode
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

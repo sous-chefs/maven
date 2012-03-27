@@ -2,7 +2,7 @@
 # Cookbook Name:: maven
 # Recipe:: maven3
 #
-# Copyright 2011, Bryan W. Berry (<bryan.berry@gmail.com>)
+# Copyright 2011, Opscode
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

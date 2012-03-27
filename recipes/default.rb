@@ -2,7 +2,9 @@
 # Cookbook Name:: maven
 # Recipe:: default
 #
-# Copyright 2011, Bryan W. Berry (<bryan.berry@gmail.com>)
+# Author:: Scott Chisamore (<scott@opscode.com>)
+# Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+# Copyright 2010, Opscode
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
