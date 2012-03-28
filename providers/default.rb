@@ -35,10 +35,9 @@ action :install do
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
   command = %Q{mvn #{plugin} #{groupId} #{artifactId} #{version} #{packaging} #{dest} #{repos}}
   unless ::File.exists?("#{artifact_file}")
-    Chef::Log.debug('command is')
-    Chef::Log.debug(command)
-    cmd = Chef::ShellOut.new(command)
-    cmd.run_command
+    b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
+    b.code command
+    b.run_action(:run)
     FileUtils.chown new_resource.owner, new_resource.owner, artifact_file
     FileUtils.chmod new_resource.mode.to_i, artifact_file
     new_resource.updated_by_last_action(true)
