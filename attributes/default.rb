@@ -3,8 +3,23 @@
 # Cookbook Name:: maven
 # Attributes:: default
 
-default['maven']['version'] = 2
-default['maven']['m2_home'] = '/usr/local/maven/default'
+default['maven']['version'] = '3.0.4'
+case node[:platform]
+when 'mac_os_x'
+  default['maven']['home'] = "/usr/local/Cellar/maven/#{default['maven']['version']}/libexec/"
+else
+  default['maven']['m2_home'] = '/usr/local/maven/default'
+  default['maven']['home'] = default['maven']['m2_home']
+end
+
+default['maven']['opts'] = nil
+
+# See readme to see examples for what data structures to build for
+# overriding these attributes.
+default['maven']['settings']['mirrors'] = nil
+default['maven']['settings']['profiles'] = nil
+default['maven']['settings']['activeProfiles'] = nil
+
 default['maven']['2']['url'] = "http://www.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
 default['maven']['2']['checksum'] = "b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376"
 default['maven']['3']['url'] = 'http://www.apache.org/dist/maven/binaries/apache-maven-3.0.3-bin.tar.gz'
