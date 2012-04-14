@@ -48,8 +48,8 @@ Providers/Resources
 maven
 -----
 
-* artifactId: if this is not specified, the resource's name is used
-* groupId: groupId for the artifact
+* artifact_id: if this is not specified, the resource's name is used
+* group_id: group_id for the artifact
 * version: version of the artifact
 * dest: the destination folder for the jar and its dependencies
 * packaging: defaults to 'jar'
@@ -62,8 +62,8 @@ maven
 # Examples
 
     maven "mysql-connector-java" do
-      groupId "mysql"
-      version "5.1.18"
+      group_id "mysql"
+      version "5.1.19"
       dest "/usr/local/tomcat/lib/"
     end
 

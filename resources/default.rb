@@ -1,7 +1,6 @@
 #
 # Cookbook Name:: maven
 # Resource::      default
-#
 # Author:: Bryan W. Berry <bryan.berry@gmail.com>
 # Copyright 2012, Opscode Inc.
 #
@@ -20,8 +19,8 @@
 
 actions :install
 
-attribute :artifactId, :kind_of => String
-attribute :groupId, :kind_of => String, :required => true
+attribute :artifact_id, :kind_of => String
+attribute :group_id, :kind_of => String, :required => true
 attribute :dest, :kind_of => String
 attribute :version, :kind_of => String, :required => true
 attribute :packaging, :kind_of => String, :default => "jar"
@@ -29,10 +28,13 @@ attribute :owner, :kind_of => String, :default => "root"
 attribute :mode, :kind_of => Integer, :default => 0644
 attribute :repositories, :kind_of => Array
 
+alias :artifactId :artifact_id 
+alias :groupId :group_id 
+
 def initialize(*args)
   super
   # we can't use the node properties when initially specifying the resource
-  @artifactId ||= @name
+  @artifact_id ||= @name
   @repositories ||= node['maven']['repositories']
   @action = :install
 end

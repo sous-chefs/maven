@@ -1,6 +1,8 @@
 #
 # Cookbook Name:: maven
 # Recipe:: maven3
+# Author:: Seth Chisamore (<seth@opscode.com>)
+# Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 #
 # Copyright 2011, Opscode
 #

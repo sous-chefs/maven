@@ -1,7 +1,6 @@
 #
 # Cookbook Name:: maven
 # Provider::      default
-# Author:: Scott Chisamore (<scott@opscode.com>)
 # Author:: Bryan W. Berry <bryan.berry@gmail.com>
 # Copyright 2011, Opscode Inc.
 #
@@ -24,16 +23,16 @@ action :install do
   unless ::File.exists?(new_resource.dest)
     FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
   end
-  artifact_file = ::File.join new_resource.dest, "#{new_resource.artifactId}-#{new_resource.version}.#{new_resource.packaging}"
-  groupId = "-DgroupId=" + new_resource.groupId
-  artifactId = "-DartifactId=" + new_resource.artifactId
+  artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  group_id = "-DgroupId=" + new_resource.group_id
+  artifact_id = "-DartifactId=" + new_resource.artifact_id
   version = "-Dversion=" + new_resource.version
   dest = "-Ddest=" + artifact_file
   repos = "-DremoteRepositories=" + new_resource.repositories.join(',')
   packaging = "-Dpackaging=" + new_resource.packaging
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
-  command = %Q{mvn #{plugin} #{groupId} #{artifactId} #{version} #{packaging} #{dest} #{repos}}
+  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
   unless ::File.exists?("#{artifact_file}")
     b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
     b.code command
