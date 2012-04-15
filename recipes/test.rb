@@ -27,10 +27,10 @@ maven "postgresql" do
 end
 
 
-# # test downloading hudson plugin and use old alias
-# maven "mysql-auth"  do
-#   groupId "org.jvnet.hudson.plugins"
-#   version "1.0"
-#   packaging 'hpi'
-#   dest "/usr/local/foobar/lib"
-# end
+# test downloading hudson plugin and use old alias
+maven "mm-mysql"  do
+  groupId "mm-mysql"
+  version "2.0.13"
+  packaging 'pom'
+  dest "/usr/local/foobar/lib"
+end

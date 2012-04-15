@@ -29,11 +29,11 @@ class TestMaven < MiniTest::Chef::TestCase
   end
 
   def test_alt_packaging
-    assert File.exists? "#{path}/mysql-auth-1.0.hpi"
+    assert File.exists? "#{path}/mm-mysql-2.0.13.pom"
   end
 
   def test_CamelCaseAliases
-    assert File.exists? "#{path}/mysql-auth-1.0.hpi"    
+    assert File.exists? "#{path}/mm-mysql-2.0.13.pom"    
   end
   
 end
