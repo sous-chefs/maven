@@ -7,9 +7,6 @@ the maven project
 Has `maven` LWRP for pulling a maven artifact from a maven repository and
 placing it in an arbitrary location.
 
-Has `maven_repo` LWRP that allows you to add your custom repo to the list
-of repos searched for artifacts
-
 Requirements
 ============
 
@@ -67,10 +64,6 @@ maven
       dest "/usr/local/tomcat/lib/"
     end
 
-maven_repo
-----------
-
-TODO, coming soon
 
 License and Author
 ==================
