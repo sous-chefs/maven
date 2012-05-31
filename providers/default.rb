@@ -19,11 +19,23 @@
 
 action :install do
   require 'fileutils'
+
+  
   # create the destination path if it doesn't already exist
   unless ::File.exists?(new_resource.dest)
     FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
   end
-  artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  
+  # Sometimes you want to grab something from a repository and save it under a 
+  # different filename.
+  dest_file = "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  unless new_resource.dest_file.nil?
+    dest_file = new_resource.dest_file
+  end
+
+  artifact_file = ::File.join new_resource.dest, dest_file
+
+
   group_id = "-DgroupId=" + new_resource.group_id
   artifact_id = "-DartifactId=" + new_resource.artifact_id
   version = "-Dversion=" + new_resource.version

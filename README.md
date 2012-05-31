@@ -86,6 +86,25 @@ The previous invocation will download all the dependencies of
       transitive "false"
     end
 
+If you need to specify the destination filename, use the dest_file
+parameter.  If dest_file is not specified, this LWRP will assume that
+you want the artifact to be saved with the standard format
+artifactId-version.packaging. If you specify dest_file you can
+override that.  This comes in handy if you are downloading something
+like a web application (WAR file) and you want to save the file under
+a name that doesn't include the version.  Here's an example with the
+Apache Solr WAR file.  (Note that this example depends on the tomcat6
+cookbook and saves a WAR file to the webapps directory of Tomcat).
+
+    maven "solr" do
+      group_id "org.apache.solr"
+      version "3.6.0"
+      packaging "war"
+      dest "#{node[:tomcat6][:webapps]}"
+      dest_file "solr.war"
+      transitive "false"
+    end
+
 maven_repo
 ----------
 
