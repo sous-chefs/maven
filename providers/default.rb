@@ -30,9 +30,10 @@ action :install do
   dest = "-Ddest=" + artifact_file
   repos = "-DremoteRepositories=" + new_resource.repositories.join(',')
   packaging = "-Dpackaging=" + new_resource.packaging
+  transitive = "-Dtransitive=" + new_resource.transitive
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
-  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
+  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos} #{transitive}}
   unless ::File.exists?("#{artifact_file}")
     b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
     b.code command
