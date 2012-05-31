@@ -61,10 +61,29 @@ maven
 
 # Examples
 
+ The following invocation of the Maven LWRP will retrieve the
+ mysql-connector-java-5.1.19.jar file and put this file into
+ /usr/local/tomcat/lib.  
+ 
     maven "mysql-connector-java" do
       group_id "mysql"
       version "5.1.19"
       dest "/usr/local/tomcat/lib/"
+    end
+    
+The previous invocation will download all the dependencies of
+ mysql-connector-java to a local Maven repository, and then copy a
+ single file to /usr/local/tomcat/lib.   If you want to avoid
+ downloading all of the transitive dependencies (maybe because you are
+ downloading a hefty WAR and you don't want to wait for dependencies),
+ specify "false" for
+ transitive.
+ 
+    maven "spring-webmvc" do
+      group_id "org.springframework"
+      version "3.1.1.RELEASE"
+      dest "/usr/local/tomcat/lib/"
+      transitive "false"
     end
 
 maven_repo
@@ -77,6 +96,7 @@ License and Author
 
 Author:: Seth Chisamore (<schisamo@opscode.com>)
 Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+Author:: Tim O'Brien (<tobrien@discursive.com>)
 
 Copyright 2010-2012, Opscode, Inc.
 
