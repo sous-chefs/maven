@@ -6,8 +6,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.2.1"
 
 depends "java"
-depends "homebrew"
 depends "ark"
+depends "homebrew"
 
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os

@@ -26,8 +26,7 @@ when 'mac_os_x'
   default['maven']['home'] = "/usr/local/Cellar/maven/#{default['maven']['version']}/libexec/"
 else
   default['maven']['version'] = 2
-  default['maven']['m2_home'] = '/usr/local/maven'
-  default['maven']['home'] = default['maven']['m2_home']
+  default['maven']['home'] = '/usr/local/maven'
 end
 
 default['maven']['opts'] = nil
@@ -39,9 +38,11 @@ default['maven']['settings']['profiles'] = nil
 default['maven']['settings']['activeProfiles'] = nil
 
 default['maven']['2']['url'] = "http://apache.mirrors.tds.net/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
+default['maven']['2']['home'] = default['maven']['home']
 default['maven']['2']['checksum'] = "b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376"
 default['maven']['2']['plugin_version'] = "2.4"
 default['maven']['3']['url'] = 'http://apache.mirrors.tds.net/maven/binaries/apache-maven-3.0.4-bin.tar.gz'
+default['maven']['3']['home'] = default['maven']['home']
 default['maven']['3']['checksum'] = "d35a876034c08cb7e20ea2fbcf168bcad4dff5801abad82d48055517513faa2f"
 default['maven']['3']['plugin_version'] = "2.4"
 default['maven']['repositories'] = ["http://repo1.maven.apache.org/maven2"]
