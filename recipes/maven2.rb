@@ -24,7 +24,7 @@ ark "maven" do
   url node['maven']['2']['url']
   checksum node['maven']['2']['checksum']
   version '2.2.1'
-  home_dir node['maven']["m2_home"]
+  home_dir node['maven']['2']['home']
   append_env_path true
 end
 

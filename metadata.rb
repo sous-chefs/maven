@@ -7,6 +7,7 @@ version          "0.2.1"
 
 depends "java"
 depends "ark"
+depends "homebrew"
 
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os
