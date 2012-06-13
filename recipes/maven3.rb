@@ -1,8 +1,10 @@
 #
 # Cookbook Name:: maven
 # Recipe:: maven3
+# Author:: Seth Chisamore (<seth@opscode.com>)
+# Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 #
-# Copyright 2011, Bryan W. Berry (<bryan.berry@gmail.com>)
+# Copyright 2011, Opscode
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,14 +19,14 @@
 # limitations under the License.
 #
 
-include_recipe "java"
-maven_home = node['maven']["m2_home"]
+include_recipe "ark"
 
-java_ark "maven3" do
+ark "maven" do
   url node['maven']['3']['url']
   checksum node['maven']['3']['checksum']
-  app_home maven_home
-  bin_cmds ["mvn"]
+  home_dir node['maven']["m2_home"]
+  version "3.0.3"
+  append_env_path true
   action :install
 end
 
