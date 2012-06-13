@@ -30,6 +30,7 @@ The following community cookbooks are dependencies:
 Attributes
 ==========
 
+* default['maven']['version']  defaults to 2
 * default['maven']['2']['home']  defaults to  '/usr/local/maven/'
 * default['maven']['2']['url']  the download url for maven2
 * default['maven']['2']['checksum']  the checksum, which you will have
