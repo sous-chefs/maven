@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-actions :install
+actions :install, :put
 
 attribute :artifact_id, :kind_of => String
 attribute :group_id, :kind_of => String, :required => true
