@@ -1,0 +1,5 @@
+cookbook 'maven', :path => '/home/berryb/pr/maven'
+cookbook 'java', :git => 'git://github.com/bryanwb/java.git', :ref => 'ca2cf6d39c44d9d43f05a6bfa51a84af4ffd9664'
+cookbook 'ark', :locked_version => '0.0.11'
+cookbook 'minitest-handler', :git => 'git://github.com/btm/minitest-handler-cookbook.git', :ref => 'e5a8d5280a29c51221f81339ccc59c901b524000'
+cookbook 'chef_handler', :locked_version => '1.0.6'

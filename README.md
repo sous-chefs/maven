@@ -91,8 +91,8 @@ end
 License and Author
 ==================
 
-Author:: Seth Chisamore (<schisamo@opscode.com>)
-Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+Author:: seth Chisamore (<seth@opscode.com>)   
+Author:: Bryan W. Berry (<bryan.berry@gmail.com>)  
 
 Copyright 2010-2012, Opscode, Inc.
 
