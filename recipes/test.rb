@@ -26,11 +26,19 @@ maven "postgresql" do
   dest "/usr/local/foobar/lib"
 end
 
-
 # test downloading hudson plugin and use old alias
 maven "mm-mysql"  do
   groupId "mm-mysql"
   version "2.0.13"
   packaging 'pom'
   dest "/usr/local/foobar/lib"
+end
+
+maven "solr-foo" do
+  artifact_id "solr"
+  groupId "org.apache.solr"
+  version "3.6.1"
+  packaging 'war'
+  dest "/usr/local/foobar/lib"
+  action :put
 end
