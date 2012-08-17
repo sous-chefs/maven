@@ -1,6 +1,6 @@
 distros = {
   :lucid32 => {
-    :url    => 'http://files.vagrantup.com/lucid32.box',
+    :url    => 'https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-ubuntu-10.04-i386.box',
     :run_list => [ "apt" ]
   },
   :centos6_3_32 => {
