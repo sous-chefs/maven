@@ -3,8 +3,8 @@ distros = {
     :url    => 'http://files.vagrantup.com/lucid32.box',
     :run_list => [ "apt" ]
   },
-  :centos6_32 => {
-    :url      => 'http://vagrant.sensuapp.org/centos-6-i386.box'
+  :centos6_3_32 => {
+    :url      => 'https://opscode-vm.s3.amazonaws.com/vagrant/boxes/opscode-centos-6.3-i386.box'
   }
 }
 
@@ -16,7 +16,7 @@ Vagrant::Config.run do |config|
       dist_config.vm.box_url = options[:url]
       
       dist_config.vm.provision :chef_solo do |chef|
-        chef.cookbooks_path = ["/tmp/maven-cookbooks", "/tmp/chef-repo"]
+        chef.cookbooks_path = ["/tmp/maven-cookbooks"]
         chef.provisioning_path = '/etc/vagrant-chef' 
         chef.log_level         = :debug		 
         chef.add_recipe "minitest-handler"
