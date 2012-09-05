@@ -19,20 +19,33 @@
 
 action :install do
   require 'fileutils'
+
+  
   # create the destination path if it doesn't already exist
   unless ::File.exists?(new_resource.dest)
     FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
   end
-  artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  
+  # Sometimes you want to grab something from a repository and save it under a 
+  # different filename.
+  dest_file = "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  unless new_resource.dest_file.nil?
+    dest_file = new_resource.dest_file
+  end
+
+  artifact_file = ::File.join new_resource.dest, dest_file
+
+
   group_id = "-DgroupId=" + new_resource.group_id
   artifact_id = "-DartifactId=" + new_resource.artifact_id
   version = "-Dversion=" + new_resource.version
   dest = "-Ddest=" + artifact_file
   repos = "-DremoteRepositories=" + new_resource.repositories.join(',')
   packaging = "-Dpackaging=" + new_resource.packaging
+  transitive = "-Dtransitive=" + new_resource.transitive
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
-  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
+  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos} #{transitive}}
   unless ::File.exists?("#{artifact_file}")
     b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
     b.code command

@@ -22,11 +22,13 @@ actions :install
 attribute :artifact_id, :kind_of => String
 attribute :group_id, :kind_of => String, :required => true
 attribute :dest, :kind_of => String
+attribute :dest_file, :kind_of => String
 attribute :version, :kind_of => String, :required => true
 attribute :packaging, :kind_of => String, :default => "jar"
 attribute :owner, :kind_of => String, :default => "root"
 attribute :mode, :kind_of => Integer, :default => 0644
 attribute :repositories, :kind_of => Array
+attribute :transitive, :kind_of => String, :default => "true"
 
 alias :artifactId :artifact_id 
 alias :groupId :group_id 
