@@ -36,4 +36,7 @@ class TestMaven < MiniTest::Chef::TestCase
     assert File.exists? "#{path}/mm-mysql-2.0.13.pom"    
   end
   
+   def test_PutAction
+    assert File.exists? "#{path}/solr-foo.war"    
+  end
 end

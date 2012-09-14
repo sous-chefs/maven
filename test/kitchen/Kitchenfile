@@ -1,0 +1,7 @@
+cookbook "maven" do
+  configuration("default"){
+    runtimes []
+    run_list_extras ["maven_test"]
+  }
+  runtimes []
+end
