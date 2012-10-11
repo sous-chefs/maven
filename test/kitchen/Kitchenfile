@@ -1,0 +1,5 @@
+cookbook "maven" do
+  configuration "default" do
+    run_list_extras ["maven_test"]
+  end
+end

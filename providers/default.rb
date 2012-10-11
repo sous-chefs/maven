@@ -17,13 +17,7 @@
 # limitations under the License.
 #
 
-action :install do
-  require 'fileutils'
-  # create the destination path if it doesn't already exist
-  unless ::File.exists?(new_resource.dest)
-    FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
-  end
-  artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+def create_command_string(artifact_file, new_resource)
   group_id = "-DgroupId=" + new_resource.group_id
   artifact_id = "-DartifactId=" + new_resource.artifact_id
   version = "-Dversion=" + new_resource.version
@@ -32,8 +26,22 @@ action :install do
   packaging = "-Dpackaging=" + new_resource.packaging
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
-  command = %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
+  %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
+end
+
+def get_mvn_artifact(action, new_resource)
+  if action == "put"
+    artifact_file = ::File.join new_resource.dest, "#{new_resource.name}.#{new_resource.packaging}"
+  else
+    artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+  end
   unless ::File.exists?("#{artifact_file}")
+     require 'fileutils'
+    # create the destination path if it doesn't already exist
+    unless ::File.exists?(new_resource.dest)
+      FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
+    end
+    command = create_command_string(artifact_file, new_resource)
     b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
     b.code command
     b.run_action(:run)
@@ -41,4 +49,12 @@ action :install do
     FileUtils.chmod new_resource.mode.to_i, artifact_file
     new_resource.updated_by_last_action(true)
   end
+end
+
+action :install do
+  get_mvn_artifact("install", new_resource)
+end
+
+action :put do
+  get_mvn_artifact("put", new_resource)
 end
