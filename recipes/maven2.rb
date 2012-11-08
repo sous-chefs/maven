@@ -28,7 +28,7 @@ ark "maven" do
   append_env_path true
 end
 
-template "/etc/mavenrc" do
+template "/etc/profile.d/maven.sh" do
   source "mavenrc.erb"
   mode "0755"
 end
