@@ -1,3 +1,9 @@
+## v0.11.0:
+
+* [COOK-1337] - add put action to maven lwrp to control name of the
+  downloaded file
+* [COOK-1657] - fix download urls
+
 ## v0.3.0:
 
 * [COOK-1145] - maven lwrp to download artifacts
