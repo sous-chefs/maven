@@ -16,6 +16,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require 'chef/mixin/shell_out'
+include Chef::Mixin::ShellOut
 
 def create_command_string(artifact_file, new_resource)
   group_id = "-DgroupId=" + new_resource.group_id
@@ -35,19 +37,24 @@ def get_mvn_artifact(action, new_resource)
   else
     artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
   end
-  unless ::File.exists?("#{artifact_file}")
-     require 'fileutils'
-    # create the destination path if it doesn't already exist
-    unless ::File.exists?(new_resource.dest)
-      FileUtils.mkdir_p new_resource.dest, { :mode => 0755 }
-    end
-    command = create_command_string(artifact_file, new_resource)
-    b = Chef::Resource::Script::Bash.new "download maven artifact", run_context
-    b.code command
-    b.run_action(:run)
-    FileUtils.chown new_resource.owner, new_resource.owner, artifact_file
-    FileUtils.chmod new_resource.mode.to_i, artifact_file
+
+  unless ::File.exists?(artifact_file)
+
+    directory new_resource.dest do
+      recursive true
+      mode 00755
+    end.run_action(:create)
+
+    shell_out!(create_command_string(artifact_file, new_resource))
+
+    file artifact_file do
+      owner new_resource.owner
+      group new_resource.owner
+      mode new_resource.mode
+    end.run_action(:create)
+
     new_resource.updated_by_last_action(true)
+
   end
 end
 
