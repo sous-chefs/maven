@@ -45,7 +45,7 @@ def get_mvn_artifact(action, new_resource)
       mode 00755
     end.run_action(:create)
 
-    b = shell_out(create_command_string(artifact_file, new_resource))
+    b = shell_out!(create_command_string(artifact_file, new_resource))
 
     file artifact_file do
       owner new_resource.owner
