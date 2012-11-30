@@ -4,8 +4,8 @@ Description
 Install and configure maven2 and maven3 from the binaries provided by
 the maven project
 
-Provides the `maven` LWRP for pulling a maven artifact from a maven repository and
-placing it in an arbitrary location.
+Provides the `maven` LWRP for pulling a maven artifact from a maven
+repository and placing it in an arbitrary location.
 
 
 Requirements
@@ -39,14 +39,16 @@ Usage
 
 Simply include the recipe where you want Apache Maven installed.
 
-The maven lwrp has two actions, `:install` and `:put`. They are essentially the same accept
-that the install action will name the the downloaded file `actifact_id-version.packaging`. For example, the
-mysql jar would be named mysql-5.1.19.jar. 
+The maven lwrp has two actions, `:install` and `:put`. They are
+essentially the same accept that the install action will name the the
+downloaded file `actifact_id-version.packaging`. For example, the
+mysql jar would be named mysql-5.1.19.jar.
 
-Use the put action when you want to explicitly control the 
-name of the downloaded file. This is useful when you download an artifact and then want to have Chef resources
-act on files within that the artifact. The put action will creat a file named `name.packaging` where name corresponds to the name
-attribute.
+Use the put action when you want to explicitly control the name of the
+downloaded file. This is useful when you download an artifact and then
+want to have Chef resources act on files within that the artifact. The
+put action will creat a file named `name.packaging` where name
+corresponds to the name attribute.
 
 
 Providers/Resources
@@ -67,25 +69,22 @@ maven
 
 
 # Examples
-```
-maven "mysql-connector-java" do
-  group_id "mysql"
-  version "5.1.19"
-  dest "/usr/local/tomcat/lib/"
-end
-# The artifact will be downloaded to /usr/local/tomcat/lib/mysql-connector-java-5.1.19.jar
-```
 
-```
-maven "solr" do
-  group_id "org.apache.solr"
-  version "3.6.1"
-  packaging "war"
-  dest "/usr/local/tomcat/webapps/"
-  action :put
-end
-# The artifact will be downloaded to /usr/local/tomcat/webapps/solr.war
-```
+    maven "mysql-connector-java" do
+      group_id "mysql"
+      version "5.1.19"
+      dest "/usr/local/tomcat/lib/"
+    end
+    # The artifact will be downloaded to /usr/local/tomcat/lib/mysql-connector-java-5.1.19.jar
+
+    maven "solr" do
+      group_id "org.apache.solr"
+      version "3.6.1"
+      packaging "war"
+      dest "/usr/local/tomcat/webapps/"
+      action :put
+    end
+    # The artifact will be downloaded to /usr/local/tomcat/webapps/solr.war
 
 
 License and Author
