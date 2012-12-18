@@ -1,3 +1,7 @@
+## v0.12.0:
+
+* [COOK-1860] - refactor maven provider to use resources and `shell_out`
+
 ## v0.11.0:
 
 * [COOK-1337] - add put action to maven lwrp to control name of the
