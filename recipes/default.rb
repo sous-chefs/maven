@@ -23,3 +23,9 @@
 include_recipe "java"
 
 include_recipe "maven::maven#{node['maven']['version']}"
+
+if node['maven']['setup_bin']
+  link '/usr/bin/mvn' do
+    to "#{node['maven']['m2_home']}/bin/mvn"
+  end
+end
