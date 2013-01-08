@@ -32,6 +32,8 @@ Attributes
 * default['maven']['m3_download_url'] download url for maven3
 * default['maven']['m3_checksum'] the checksum, which you will have
  to recalculate if you change the download url
+* default['maven']['setup_bin'] Whether or not to put mvn on your
+ system path, defaults to false
 
 
 Usage
