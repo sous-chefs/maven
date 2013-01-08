@@ -1,3 +1,7 @@
+## v0.13.0:
+
+* [COOK-2116] - maven should be available on the path
+
 ## v0.12.0:
 
 * [COOK-1860] - refactor maven provider to use resources and `shell_out`
