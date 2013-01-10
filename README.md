@@ -43,7 +43,7 @@ Simply include the recipe where you want Apache Maven installed.
 
 The maven lwrp has two actions, `:install` and `:put`. They are
 essentially the same accept that the install action will name the the
-downloaded file `actifact_id-version.packaging`. For example, the
+downloaded file `artifact_id-version.packaging`. For example, the
 mysql jar would be named mysql-5.1.19.jar.
 
 Use the put action when you want to explicitly control the name of the
