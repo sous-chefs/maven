@@ -29,14 +29,18 @@ def create_command_string(artifact_file, new_resource)
   classifier = "-Dclassifier=" + new_resource.classifier
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
-  %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{dest} #{repos}}
+  %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos}}
 end
 
 def get_mvn_artifact(action, new_resource)
   if action == "put"
     artifact_file = ::File.join new_resource.dest, "#{new_resource.name}.#{new_resource.packaging}"
   else
-    artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+    case new_resource.classifier.nil?
+    when true
+      artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+    else
+      artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
   end
 
   unless ::File.exists?(artifact_file)
