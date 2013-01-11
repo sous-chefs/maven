@@ -64,6 +64,7 @@ maven
 * version: version of the artifact
 * dest: the destination folder for the jar and its dependencies
 * packaging: defaults to 'jar'
+* classifier: distinguishes artifacts that were build from the same POM but differ in context
 * repositories: array of maven repositories to use, defaults to
  ["http://repo1.maven.apache.org/maven2"]
 * owner: the owner of the resulting file, default is root
@@ -88,14 +89,25 @@ maven
     end
     # The artifact will be downloaded to /usr/local/tomcat/webapps/solr.war
 
+    maven "custom-application" do
+      group_id "com.company.name"
+      version "2.0.0"
+      dest "/usr/local/tomcat/lib"
+      classifier "client"
+      action :put
+    end
+    # The artifact will be downloaded to /usr/local/tomcat/lib/custom-application-2.0.0-client.jar
+
+
 
 License and Author
 ==================
 
 Author:: Seth Chisamore (<schisamo@opscode.com>)
 Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+Author:: Leif Madsen (<lmadsen@thinkingphones.com>)
 
-Copyright 2010-2012, Opscode, Inc.
+Copyright 2010-2013, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
