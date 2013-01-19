@@ -64,7 +64,7 @@ maven
 * version: version of the artifact
 * dest: the destination folder for the jar and its dependencies
 * packaging: defaults to 'jar'
-* classifier: distinguishes artifacts that were build from the same POM but differ in context
+* classifier: distinguishes artifacts that were built from the same POM but differ in context
 * repositories: array of maven repositories to use, defaults to
  ["http://repo1.maven.apache.org/maven2"]
 * owner: the owner of the resulting file, default is root

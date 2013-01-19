@@ -36,11 +36,11 @@ def get_mvn_artifact(action, new_resource)
   if action == "put"
     artifact_file = ::File.join new_resource.dest, "#{new_resource.name}.#{new_resource.packaging}"
   else
-    case new_resource.classifier.nil?
-    when true
-      artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+    artifact_file = if new_resource.classifier.nil?
+      ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
     else
-      artifact_file = ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+      ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+    end
   end
 
   unless ::File.exists?(artifact_file)
