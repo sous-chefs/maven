@@ -26,7 +26,7 @@ def create_command_string(artifact_file, new_resource)
   dest = "-Ddest=" + artifact_file
   repos = "-DremoteRepositories=" + new_resource.repositories.join(',')
   packaging = "-Dpackaging=" + new_resource.packaging
-  classifier = "-Dclassifier=" + new_resource.classifier
+  classifier = "-Dclassifier=" + new_resource.classifier if new_resource.classifier
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
   %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos}}
