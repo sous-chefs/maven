@@ -7,7 +7,7 @@ maven "mysql-connector-java" do
   group_id "mysql"
   version "5.1.19"
   mode   0755
-  owner  'foobarbaz'
+  owner  "foobarbaz"
   dest "/usr/local/foobar/lib/"
 end
 
@@ -16,7 +16,7 @@ maven "java persistence library"  do
   artifact_id "javax.persistence"
   group_id "org.eclipse.persistence"
   version "2.0.0"
-  repositories [ 'http://mirrors.ibiblio.org/pub/mirrors/maven2/' ]
+  repositories [ "http://mirrors.ibiblio.org/pub/mirrors/maven2/" ]
   dest "/usr/local/foobar/lib"
 end
 
@@ -24,7 +24,10 @@ end
 maven "postgresql" do
   group_id "postgresql"
   version "9.0-801.jdbc4"
-  repositories [ 'http://mirrors.ibiblio.org/pub/mirrors/maven2/', "http://repo1.maven.apache.org/maven2"  ]
+  repositories [
+    "http://mirrors.ibiblio.org/pub/mirrors/maven2/",
+    "http://repo1.maven.apache.org/maven2"
+  ]
   dest "/usr/local/foobar/lib"
 end
 
@@ -33,7 +36,7 @@ end
 maven "mm-mysql"  do
   groupId "mm-mysql"
   version "2.0.13"
-  packaging 'pom'
+  packaging "pom"
   dest "/usr/local/foobar/lib"
 end
 
@@ -41,7 +44,7 @@ maven "solr-foo" do
   artifact_id "solr"
   groupId "org.apache.solr"
   version "3.6.1"
-  packaging 'war'
+  packaging "war"
   dest "/usr/local/foobar/lib"
   action :put
-  end
+end
