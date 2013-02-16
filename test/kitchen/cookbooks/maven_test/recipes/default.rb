@@ -47,4 +47,5 @@ maven "solr-foo" do
   packaging "war"
   dest "/usr/local/foobar/lib"
   action :put
+  transitive true
 end
