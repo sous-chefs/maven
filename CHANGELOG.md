@@ -1,3 +1,7 @@
+## v0.15.0:
+
+* [COOK-1336] - Make Transitive Flag Configurable
+
 ## v0.14.0:
 
 * [COOK-2191] - maven3 recipe's "version" doesn't match the attributes
