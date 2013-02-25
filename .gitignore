@@ -1,7 +1,14 @@
 .vagrant
-#*#
+Berksfile.lock
+Gemfile.lock
 *~
-.kitchen/
-
-# RubyMine
-/.idea
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+.bundle
+.cache
+.kitchen
+bin
+.kitchen.local.yml
