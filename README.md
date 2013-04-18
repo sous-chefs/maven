@@ -26,12 +26,12 @@ Attributes
 
 * default['maven']['version']  defaults to 2
 * default['maven']['m2_home']  defaults to  '/usr/local/maven/'
-* default['maven']['m2_download_url']  the download url for maven2
-* default['maven']['m2_checksum']  the checksum, which you will have
- to recalculate if you change the download url
-* default['maven']['m3_download_url'] download url for maven3
-* default['maven']['m3_checksum'] the checksum, which you will have
- to recalculate if you change the download url
+* default['maven']['2']['url']  the download url for maven2
+* default['maven']['2']['checksum']  the checksum, which you will have
+ to recalculate if you change the download url using shasum -a 256 <file>
+* default['maven']['3']['url'] download url for maven3
+* default['maven']['3']['checksum'] the checksum, which you will have
+ to recalculate if you change the download url using shasum -a 256 <file>
 * default['maven']['setup_bin'] Whether or not to put mvn on your
  system path, defaults to false
 
