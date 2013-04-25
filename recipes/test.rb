@@ -2,6 +2,25 @@ include_recipe "maven"
 
 user "foobarbaz"
 
+%w(/usr/local/notifyOne /usr/local/notifyTwo /usr/local/foobar/lib/mysql-connector-java-5.1.19.jar).each do |fname| 
+  file fname do
+      action :delete
+      ignore_failure  true
+  end
+end
+
+
+file "/usr/local/notifyOne" do
+  content "I was notified"
+  action :nothing
+end
+
+file "/usr/local/notifyTwo" do
+  content "I was notified"
+  action :nothing
+end
+
+
 # basic test
 maven "mysql-connector-java" do
   group_id "mysql"
@@ -9,7 +28,19 @@ maven "mysql-connector-java" do
   mode   0755
   owner  "foobarbaz"
   dest "/usr/local/foobar/lib/"
+  notifies :create, "file[/usr/local/notifyOne]"
 end
+
+maven "otherNameThanBefore" do
+  artifact_id "mysql-connector-java"
+  group_id "mysql"
+  version "5.1.19"
+  mode   0755
+  owner  "foobarbaz"
+  dest "/usr/local/foobar/lib/"
+  notifies :create, "file[/usr/local/notifyTwo]"
+end
+
 
 # test from alternate repo
 maven "java persistence library"  do

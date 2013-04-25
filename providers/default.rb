@@ -17,7 +17,11 @@
 # limitations under the License.
 #
 require 'chef/mixin/shell_out'
+require 'chef/mixin/checksum'
+require 'fileutils'
+require 'chef'
 include Chef::Mixin::ShellOut
+include Chef::Mixin::Checksum
 
 def create_command_string(artifact_file, new_resource)
   group_id = "-DgroupId=" + new_resource.group_id
@@ -35,32 +39,36 @@ end
 
 def get_mvn_artifact(action, new_resource)
   if action == "put"
-    artifact_file = ::File.join new_resource.dest, "#{new_resource.name}.#{new_resource.packaging}"
+    artifact_file_name = "#{new_resource.name}.#{new_resource.packaging}"
   else
-    artifact_file = if new_resource.classifier.nil?
-      ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+    artifact_file_name = if new_resource.classifier.nil?
+      "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
     else
-      ::File.join new_resource.dest, "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+      "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
     end
   end
 
-  unless ::File.exists?(artifact_file)
+ 
+ tmpDir = ::Dir.tmpdir
+ tmpFile = ::File.join(tmpDir, artifact_file_name)
+ shell_out!(create_command_string(tmpFile, new_resource))
+ destfile = ::File.join(new_resource.dest, artifact_file_name)
 
+ unless (::File.exists?(destfile) && (checksum(tmpFile) == (checksum(destfile))))
     directory new_resource.dest do
       recursive true
       mode 00755
     end.run_action(:create)
 
-    shell_out!(create_command_string(artifact_file, new_resource))
+    FileUtils.cp(tmpFile, destfile, :preserve => true)
 
-    file artifact_file do
+    file destfile do
       owner new_resource.owner
       group new_resource.owner
       mode new_resource.mode
     end.run_action(:create)
 
     new_resource.updated_by_last_action(true)
-
   end
 end
 
