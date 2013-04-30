@@ -28,12 +28,14 @@ platforms:
 suites:
 - name: maven2
   run_list:
+  - recipe[minitest-handler]
   - recipe[maven]
   - recipe[maven::test]
   attributes: {}
 
 - name: maven3
   run_list:
+  - recipe[minitest-handler]
   - recipe[maven]
   - recipe[maven::test]
   attributes: { maven: { version: 3 } }
