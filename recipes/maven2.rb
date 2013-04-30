@@ -23,7 +23,7 @@ include_recipe "ark"
 ark "maven" do
   url node['maven']['2']['url']
   checksum node['maven']['2']['checksum']
-  version '2.2.1'
+  version node['maven']['2']['version']
   home_dir node['maven']["m2_home"]
   append_env_path true
 end
