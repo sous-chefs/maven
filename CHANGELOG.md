@@ -1,3 +1,14 @@
+## v0.16.0:
+
+### Task
+
+- [COOK-1874]: refactor maven default recipe to use version attributes
+
+### Bug
+
+- [COOK-2770]: maven cookbook broken for maven3 now that maven 3.0.5
+  has been released
+
 ## v0.15.0:
 
 * [COOK-1336] - Make Transitive Flag Configurable
