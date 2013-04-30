@@ -21,11 +21,19 @@
 #
 
 include_recipe "java"
+include_recipe "ark"
 
-include_recipe "maven::maven#{node['maven']['version']}"
+mvn_version = node['maven']['version'].to_s
 
-if node['maven']['setup_bin']
-  link '/usr/bin/mvn' do
-    to "#{node['maven']['m2_home']}/bin/mvn"
-  end
+ark "maven" do
+  url node['maven'][mvn_version]['url']
+  checksum node['maven'][mvn_version]['checksum']
+  home_dir node['maven']['m2_home']
+  version node['maven'][mvn_version]['version']
+  append_env_path true
+end
+
+template "/etc/mavenrc" do
+  source "mavenrc.erb"
+  mode 00755
 end

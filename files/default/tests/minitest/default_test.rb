@@ -3,7 +3,7 @@ class TestMaven < MiniTest::Chef::TestCase
   def path
     "/usr/local/foobar/lib/"
   end
-  
+
   def test_mysql_jar_unpacked
     assert File.exists? "#{path}/mysql-connector-java-5.1.19.jar"
   end
@@ -33,10 +33,15 @@ class TestMaven < MiniTest::Chef::TestCase
   end
 
   def test_CamelCaseAliases
-    assert File.exists? "#{path}/mm-mysql-2.0.13.pom"    
+    assert File.exists? "#{path}/mm-mysql-2.0.13.pom"
   end
-  
+
    def test_PutAction
-    assert File.exists? "#{path}/solr-foo.war"    
+    assert File.exists? "#{path}/solr-foo.war"
   end
+
+   def test_mavenrc
+     assert File.exists? "/etc/mavenrc"
+   end
+
 end
