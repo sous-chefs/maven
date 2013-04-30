@@ -1,4 +1,8 @@
-## v0.16.0:
+## v0.16.2:
+
+The following changes were originally released as 0.16.0, but the
+README incorrectly referred to the maven# recipes, which are now
+removed.
 
 ### Task
 

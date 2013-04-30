@@ -23,7 +23,8 @@ The following Opscode cookbooks are dependencies:
 Attributes
 ==========
 
-* `node['maven']['version']`  defaults to 2
+* `node['maven']['version']`  defaults to 2, specifies the major
+  version of maven to install.
 * `node['maven']['m2_home']`  defaults to  '/usr/local/maven/'
 * `node['maven']['2']['url']`  the download url for maven2
 * `node['maven']['2']['checksum']`  the checksum, which you will have
@@ -43,17 +44,7 @@ Recipes
 ## default
 
 Includes the java recipe, and then installs maven according to the
-version specific recipes (see below).
-
-## maven2
-
-Version specific recipe for Maven 2. Uses `ark` resource from
-Opscode's `ark` cookbook to install and configure maven.
-
-## maven3
-
-Version specific recipe for Maven 3. Uses `ark` resource from
-Opscode's `ark` cookbook to install and configure maven.
+version specified by the `node['maven']['version']` attribute.
 
 ## test
 
