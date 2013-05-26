@@ -34,6 +34,6 @@ ark "maven" do
 end
 
 template "/etc/mavenrc" do
-  source "mavenrc.erb"
+  source "add_to_path.sh.erb"
   mode 00755
 end
