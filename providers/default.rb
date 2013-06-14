@@ -19,7 +19,6 @@
 require 'chef/mixin/shell_out'
 require 'chef/mixin/checksum'
 require 'fileutils'
-require 'chef'
 include Chef::Mixin::ShellOut
 include Chef::Mixin::Checksum
 
@@ -48,28 +47,29 @@ def get_mvn_artifact(action, new_resource)
     end
   end
 
- 
- tmpDir = ::Dir.tmpdir
- tmpFile = ::File.join(tmpDir, artifact_file_name)
- shell_out!(create_command_string(tmpFile, new_resource))
- destfile = ::File.join(new_resource.dest, artifact_file_name)
 
- unless (::File.exists?(destfile) && (checksum(tmpFile) == (checksum(destfile))))
-    directory new_resource.dest do
-      recursive true
-      mode 00755
-    end.run_action(:create)
+ Dir.mktmpdir ("chef_maven_lwrp") { |tmp_dir|
+    tmp_file = ::File.join(tmp_dir, artifact_file_name)
+    shell_out!(create_command_string(tmp_file, new_resource))
+    dest_file = ::File.join(new_resource.dest, artifact_file_name)
 
-    FileUtils.cp(tmpFile, destfile, :preserve => true)
+    unless (::File.exists?(dest_file) && (checksum(tmp_file) == (checksum(dest_file))))
+        directory new_resource.dest do
+          recursive true
+          mode 00755
+        end.run_action(:create)
 
-    file destfile do
-      owner new_resource.owner
-      group new_resource.owner
-      mode new_resource.mode
-    end.run_action(:create)
+        FileUtils.cp(tmp_file, dest_file, :preserve => true)
 
-    new_resource.updated_by_last_action(true)
-  end
+        file dest_file do
+          owner new_resource.owner
+          group new_resource.owner
+          mode new_resource.mode
+        end.run_action(:create)
+
+        new_resource.updated_by_last_action(true)
+      end
+ }
 end
 
 action :install do
