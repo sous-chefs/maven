@@ -48,7 +48,7 @@ class TestMaven < MiniTest::Chef::TestCase
     assert File.exists? "/usr/local/notifyOne"
   end
 
-  def test_isIdempotent
+  def test_is_idempotent
     assert !(File.exists? "/usr/local/notifyTwo")
   end
 end
