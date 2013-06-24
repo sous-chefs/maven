@@ -40,8 +40,15 @@ class TestMaven < MiniTest::Chef::TestCase
     assert File.exists? "#{path}/solr-foo.war"
   end
 
-   def test_mavenrc
+  def test_mavenrc
      assert File.exists? "/etc/mavenrc"
-   end
+  end
 
+  def test_notifies 
+    assert File.exists? "/usr/local/notifyOne"
+  end
+
+  def test_is_idempotent
+    assert !(File.exists? "/usr/local/notifyTwo")
+  end
 end
