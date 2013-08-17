@@ -23,7 +23,7 @@ The following Opscode cookbooks are dependencies:
 Attributes
 ==========
 
-* `node['maven']['version']`  defaults to 2, specifies the major
+* `node['maven']['version']`  defaults to 3, specifies the major
   version of maven to install.
 * `node['maven']['m2_home']`  defaults to  '/usr/local/maven/'
 * `node['maven']['2']['url']`  the download url for maven2
