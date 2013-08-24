@@ -44,7 +44,7 @@ class TestMaven < MiniTest::Chef::TestCase
      assert File.exists? "/etc/mavenrc"
   end
 
-  def test_notifies 
+  def test_notifies
     assert File.exists? "/usr/local/notifyOne"
   end
 

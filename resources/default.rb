@@ -30,8 +30,8 @@ attribute :mode, :kind_of => Integer, :default => 0644
 attribute :repositories, :kind_of => Array
 attribute :transitive, :kind_of => [ TrueClass, FalseClass ], :default => false
 
-alias :artifactId :artifact_id 
-alias :groupId :group_id 
+alias :artifactId :artifact_id
+alias :groupId :group_id
 
 def initialize(*args)
   super

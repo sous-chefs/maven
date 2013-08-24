@@ -2,7 +2,7 @@ include_recipe "maven"
 
 user "foobarbaz"
 
-%w(/usr/local/notifyOne /usr/local/notifyTwo /usr/local/foobar/lib/mysql-connector-java-5.1.19.jar).each do |fname| 
+%w(/usr/local/notifyOne /usr/local/notifyTwo /usr/local/foobar/lib/mysql-connector-java-5.1.19.jar).each do |fname|
   file fname do
       action :delete
       ignore_failure  true
