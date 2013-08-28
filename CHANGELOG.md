@@ -3,6 +3,14 @@ maven Cookbook CHANGELOG
 This file is used to list changes made in each version of the maven cookbook.
 
 
+v0.16.4
+-------
+### Improvement
+- **[COOK-3352](https://tickets.opscode.com/browse/COOK-3352)** - Improve `repository_root` attribute customization
+
+### Bug
+- **[COOK-2799](https://tickets.opscode.com/browse/COOK-2799)** - Fix idempotency in LWRP
+
 v0.16.2
 -------
 The following changes were originally released as 0.16.0, but the README incorrectly referred to the maven# recipes, which are now removed.
