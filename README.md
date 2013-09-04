@@ -18,7 +18,8 @@ The following Opscode cookbooks are dependencies:
 
 * java - this cookbook not only depends on the java virtual machine
   but it also depends on the java_ark LWRP present in the java cookbooks
-* ark - used to unpack the maven tarball
+* ark - used to download and unpack the maven tarball
+  * **Warning:** Due to bug [[COOK-3118]](http://tickets.opscode.com/browse/COOK-3118), maven cookbook cannot be integrated with ark 0.2.x and 0.3.0.
 
 Attributes
 ==========

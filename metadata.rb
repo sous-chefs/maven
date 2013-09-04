@@ -7,7 +7,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.16.5"
 
 depends "java"
-depends "ark"
+depends "ark", "< 0.2.0" # restriction due to [COOK-3118] 
+                         # (this problem will be fixed in upcoming ark 0.3.1)
 
 %w{ debian ubuntu centos redhat fedora }.each do |os|
   supports os
