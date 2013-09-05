@@ -34,11 +34,11 @@ suites:
   - recipe[minitest-handler]
   - recipe[maven]
   - recipe[maven::test]
-  attributes: {}
+  attributes: { maven: { version: 2 } }
 
 - name: maven3
   run_list:
   - recipe[minitest-handler]
   - recipe[maven]
   - recipe[maven::test]
-  attributes: { maven: { version: 3 } }
+  attributes: {}
