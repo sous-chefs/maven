@@ -36,4 +36,5 @@ end
 template "/etc/mavenrc" do
   source "mavenrc.erb"
   mode 00755
+  only_if { node['maven']['create_mavenrc'] }
 end

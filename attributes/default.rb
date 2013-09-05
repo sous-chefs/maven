@@ -33,3 +33,4 @@ default['maven']['3']['checksum'] = "59088c62c14b996d597bbd55e720866b0e13e36daed
 default['maven']['3']['plugin_version'] = "2.4"
 default['maven']['repositories'] = ["http://repo1.maven.apache.org/maven2"]
 default['maven']['setup_bin'] = false
+default['maven']['create_mavenrc'] = true

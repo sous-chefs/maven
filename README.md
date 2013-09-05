@@ -37,6 +37,8 @@ Attributes
   use; must be specified as an array. Used in the maven LWRP.
 * `node['maven']['setup_bin']` Whether or not to put mvn on your
  system path, defaults to false
+ * `node['maven']['create_mavenrc']` Whether or not to create the file
+ '/etc/mavenrc' based on the included template
 
 Recipes
 =======
@@ -118,6 +120,7 @@ License and Author
 - Author:: Seth Chisamore (<schisamo@opscode.com>)
 - Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 - Author:: Leif Madsen (<lmadsen@thinkingphones.com>)
+- Author:: Sander van Harmelen (<svanharmelen@schubergphilis.com>)
 
 Copyright 2010-2013, Opscode, Inc.
 
