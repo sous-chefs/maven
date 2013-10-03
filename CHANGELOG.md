@@ -3,6 +3,12 @@ maven Cookbook CHANGELOG
 This file is used to list changes made in each version of the maven cookbook.
 
 
+v1.0.0
+------
+### Improvement
+- **[COOK-3470](https://tickets.opscode.com/browse/COOK-3470)** - Improve `/etc/mavenrc` template
+- **[COOK-3459](https://tickets.opscode.com/browse/COOK-3459)** - Install Maven 3.1.0 by default
+
 v0.16.4
 -------
 ### Improvement
