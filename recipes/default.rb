@@ -23,13 +23,15 @@
 include_recipe 'java::default'
 include_recipe 'ark::default'
 
-mvn_version = node['maven']['version'].to_s
+mvn_major_version = node['maven']['version'].to_s
+mvn_version       = node['maven'][mvn_major_version]['version']
+server_url        = node['maven']['server_url']
 
 ark 'maven' do
-  url      node['maven'][mvn_version]['url']
-  checksum node['maven'][mvn_version]['checksum']
+  url      "#{server_url}/maven-#{mvn_major_version}/#{mvn_version}/binaries/apache-maven-#{mvn_version}-bin.tar.gz"
+  checksum node['maven'][mvn_major_version]['checksum']
   home_dir node['maven']['m2_home']
-  version  node['maven'][mvn_version]['version']
+  version  node['maven'][mvn_major_version]['version']
   append_env_path true
 end
 
