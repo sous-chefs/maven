@@ -27,7 +27,7 @@ default['maven']['mavenrc']['opts'] = '-Dmaven.repo.local=$HOME/.m2/repository -
 default['maven']['2']['version'] = '2.2.1'
 default['maven']['2']['checksum'] = 'b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376'
 default['maven']['2']['plugin_version'] = '2.4'
-default['maven']['3']['version'] = '3.1.0'
+default['maven']['3']['version'] = '3.1.1'
 default['maven']['3']['checksum'] = '59088c62c14b996d597bbd55e720866b0e13e36daed8a46a81c01058ee74bd54'
 default['maven']['3']['plugin_version'] = '2.4'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven2']
