@@ -30,7 +30,7 @@ def create_command_string(artifact_file, new_resource)
   artifact_id = '-DartifactId=' + new_resource.artifact_id
   version = '-Dversion=' + new_resource.version
   dest = '-Ddest=' + artifact_file
-  force_update = new_resource.version =~ /-SNAPSHOT$/? '-U':''
+  force_update = new_resource.version =~ /-SNAPSHOT$/ ? '-U' : ''
   repos = '-DremoteRepositories=' + new_resource.repositories.join(',')
   packaging = '-Dpackaging=' + new_resource.packaging
   classifier = '-Dclassifier=' + new_resource.classifier if new_resource.classifier
