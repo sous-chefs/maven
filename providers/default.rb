@@ -65,7 +65,7 @@ def get_mvn_artifact(action, new_resource)
 
       file dest_file do
         owner new_resource.owner
-        group new_resource.owner
+        group new_resource.group
         mode new_resource.mode
       end.run_action(:create)
 
