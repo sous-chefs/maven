@@ -8,9 +8,11 @@ version          '1.1.1'
 
 depends 'ark',  '~> 0.4'
 depends 'java', '~> 1.13'
+depends 'windows'
 
 supports 'centos'
 supports 'debian'
 supports 'fedora'
 supports 'redhat'
 supports 'ubuntu'
+supports 'windows'
