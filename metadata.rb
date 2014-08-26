@@ -7,7 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.1.1'
 
 depends 'ark',  '~> 0.4'
-depends 'java', '~> 1.13'
+depends "java", ">= 1.15.4"
 
 supports 'centos'
 supports 'debian'

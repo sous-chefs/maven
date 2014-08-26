@@ -37,9 +37,11 @@ Recipes
 ### default
 Includes the java recipe, and then installs maven according to the version specified by the `node['maven']['version']` attribute.
 
+### settings
+Installs gems required to parse settings.xml to ruby and hash and back to xml
+
 ### test
 **For testing only**. From the development repository, use test-kitchen to test that the LWRP is operating with this recipe. Also contains example usage of the LWRP.
-
 
 Usage
 -----
@@ -52,6 +54,22 @@ Use the put action when you want to explicitly control the name of the downloade
 
 Providers/Resources
 -------------------
+
+## maven\_settings
+
+Resource provider for modifying the maven settings.
+
+### Actions
+Action  | Description                          | Default
+------- |-------------                         |---------
+update  | Updates a global maven setting to a new value. | Yes
+
+### Attributes
+Attribute  | Description                                  | Type                          | Default
+---------  |-------------                                 |-----                          |--------
+path       | Period '.' delimited path to element of the settings that is going to be changed. | String                        | name
+value      | The new value to update the path to.                     | String, TrueClass, FalseClass, Hash |
+
 ### maven
 - `artifact_id` - if this is not specified, the resource's name is used
 - `group_id` - group_id for the artifact

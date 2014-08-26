@@ -28,9 +28,10 @@ default['maven']['2']['version'] = '2.2.1'
 default['maven']['2']['url'] = "http://apache.mirrors.tds.net/maven/maven-2/#{node['maven']['2']['version']}/binaries/apache-maven-#{node['maven']['2']['version']}-bin.tar.gz"
 default['maven']['2']['checksum'] = 'b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376'
 default['maven']['2']['plugin_version'] = '2.4'
-default['maven']['3']['version'] = '3.1.1'
-default['maven']['3']['url'] = "http://apache.mirrors.tds.net/maven/maven-3/#{node['maven']['3']['version']}/binaries/apache-maven-#{node['maven']['3']['version']}-bin.tar.gz"
-default['maven']['3']['checksum'] = '077ed466455991d5abb4748a1d022e2d2a54dc4d557c723ecbacdc857c61d51b'
+default['maven']['3']['version'] = '3.2.3'
+default['maven']['3']['url'] = "http://www.carfab.com/apachesoftware/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz"
+default['maven']['3']['checksum'] = 'bf3f04aadee3a67158aebdfb0b4cb022063329d459d10fd6b4b02223e10aa8ed'
+
 default['maven']['3']['plugin_version'] = '2.4'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven2']
 default['maven']['setup_bin'] = false
