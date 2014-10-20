@@ -30,7 +30,7 @@ ark 'maven' do
   checksum node['maven'][mvn_version]['checksum']
   home_dir node['maven']['m2_home']
   version  node['maven'][mvn_version]['version']
-  append_env_path true
+  append_env_path node['maven']['setup_bin']
 end
 
 template '/etc/mavenrc' do
