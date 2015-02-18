@@ -14,7 +14,7 @@ Requirements
 - Red Hat
 - Fedora
 
-The following Opscode cookbooks are dependencies:
+The following Chef Software cookbooks are dependencies:
 - java - this cookbook not only depends on the java virtual machine but it also depends on the java_ark LWRP present in the java cookbooks
 - ark - used to unpack the maven tarball
 
@@ -97,12 +97,12 @@ end
 
 License & Authors
 -----------------
-- Author:: Seth Chisamore (<schisamo@opscode.com>)
+- Author:: Seth Chisamore (<schisamo@chef.io>)
 - Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 - Author:: Leif Madsen (<lmadsen@thinkingphones.com>)
 
 ```text
-Copyright 2010-2013, Opscode, Inc.
+Copyright 2010-2013, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
