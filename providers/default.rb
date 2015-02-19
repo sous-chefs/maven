@@ -52,7 +52,8 @@ def get_mvn_artifact(action, new_resource)
 
   Dir.mktmpdir('chef_maven_lwrp') do |tmp_dir|
     tmp_file = ::File.join(tmp_dir, artifact_file_name)
-    shell_out!(create_command_string(tmp_file, new_resource))
+    timeout = new_resource.timeout ? new_resource.timeout : 60
+    shell_out!(create_command_string(tmp_file, new_resource), :timeout => timeout)
     dest_file = ::File.join(new_resource.dest, artifact_file_name)
 
     unless ::File.exists?(dest_file) && checksum(tmp_file) == checksum(dest_file)
