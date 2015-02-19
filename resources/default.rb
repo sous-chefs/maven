@@ -27,6 +27,7 @@ attribute :version,      :kind_of => String, :required => true
 attribute :packaging,    :kind_of => String, :default => 'jar'
 attribute :classifier,   :kind_of => String
 attribute :owner,        :kind_of => String, :default => 'root'
+attribute :timeout,      :kind_of => [Integer, String], :default => '60'
 attribute :mode,         :kind_of => [Integer, String], :default => '0644'
 attribute :repositories, :kind_of => Array
 attribute :transitive,   :kind_of => [TrueClass, FalseClass], :default => false
