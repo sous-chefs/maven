@@ -64,6 +64,7 @@ Providers/Resources
 - `owner` - the owner of the resulting file, default is root
 - `mode` - integer value for file permissions, default is 0644
 - `transitive` - whether to resolve dependencies transitively, defaults to false. Please note: Event true will only place one artifact in dest. All others are downloaded to the local repository.
+- `timeout` - sets the timeout (in seconds) of file download, default is 600
 
 #### Examples
 
