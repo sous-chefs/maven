@@ -2,6 +2,9 @@ maven Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the maven cookbook.
 
+v1.3.0
+------
+- Adding Windows support
 
 v1.2.0
 ------
