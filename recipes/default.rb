@@ -26,14 +26,26 @@ include_recipe 'ark::default'
 mvn_version = node['maven']['version'].to_s
 
 ark 'maven' do
-  url      node['maven'][mvn_version]['url']
-  checksum node['maven'][mvn_version]['checksum']
-  home_dir node['maven']['m2_home']
-  version  node['maven'][mvn_version]['version']
+  url             node['maven'][mvn_version]['url']
+  checksum        node['maven'][mvn_version]['checksum']
+  home_dir        node['maven']['m2_home']
+  win_install_dir node['maven']['m2_home']
+  version         node['maven'][mvn_version]['version']
   append_env_path true
 end
 
-template '/etc/mavenrc' do
-  source 'mavenrc.erb'
-  mode   '0755'
+if node['platform_family'] === 'windows'
+  env 'M2_HOME' do
+    value node['maven']['m2_home']
+    action :create
+  end
+  env 'MAVEN_OPTS' do
+    value node['maven']['mavenrc']['opts']
+    action :create
+  end
+else
+  template '/etc/mavenrc' do
+    source 'mavenrc.erb'
+    mode   '0755'
+  end
 end
