@@ -31,6 +31,7 @@ ark 'maven' do
   home_dir        node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
   version         node['maven'][mvn_version]['version']
+  owner           node['maven']['owner']
   append_env_path true
 end
 

@@ -21,6 +21,7 @@
 # limitations under the License.
 #
 
+default['maven']['owner'] = 'root'
 default['maven']['version'] = 3
 default['maven']['m2_home'] = '/usr/local/maven'
 default['maven']['mavenrc']['opts'] = '-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m -XX:MaxPermSize=192m'
