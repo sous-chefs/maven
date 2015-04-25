@@ -36,7 +36,8 @@ def create_command_string(artifact_file, new_resource)
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
   transitive = '-Dtransitive=' + new_resource.transitive.to_s
-  %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos} #{transitive}}
+  extra_opts = new_resource.extra_opts
+  %Q{mvn #{extra_opts} #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos} #{transitive}}
 end
 
 def get_mvn_artifact(action, new_resource)

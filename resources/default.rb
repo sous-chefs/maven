@@ -30,6 +30,7 @@ attribute :owner,        :kind_of => String, :default => 'root'
 attribute :mode,         :kind_of => [Integer, String], :default => '0644'
 attribute :repositories, :kind_of => Array
 attribute :transitive,   :kind_of => [TrueClass, FalseClass], :default => false
+attribute :extra_opts,   :kind_of => String
 
 alias_method :artifactId, :artifact_id # rubocop:disable SymbolName
 alias_method :groupId, :group_id # rubocop:disable SymbolName
