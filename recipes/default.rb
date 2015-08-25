@@ -1,51 +1,41 @@
 #
-# Cookbook Name:: maven
-# Recipe:: default
+# Cookbook: maven
+# License: Apache 2.0
 #
-# Author:: Seth Chisamore (<schisamo@chef.io>)
-# Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
+# Copyright 2010-2013, Chef Software, Inc.
+# Copyright 2015, Bloomberg Finance L.P.
 #
-# Copyright:: 2010-2012, Chef Software, Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+include_recipe 'libarchive::default'
 
-include_recipe 'java::default' if node['maven']['install_java']
-include_recipe 'ark::default'
+artifact_url = node['maven']['remote_url'] % {
+  major_version: node['maven']['version'].to_i,
+  version: node['maven']['version']
+}
 
-mvn_version = node['maven']['version'].to_s
-
-ark 'maven' do
-  url             node['maven'][mvn_version]['url']
-  checksum        node['maven'][mvn_version]['checksum']
-  home_dir        node['maven']['m2_home']
-  win_install_dir node['maven']['m2_home']
-  version         node['maven'][mvn_version]['version']
-  append_env_path true
+basename = File.basename(artifact_url)
+remote_file File.join(Chef::Config[:file_cache_path], basename) do
+  source artifact_url
+  checksum node['maven']['remote_checksum']
 end
 
-if node['platform_family'] === 'windows'
-  env 'M2_HOME' do
-    value node['maven']['m2_home']
-    action :create
-  end
-  env 'MAVEN_OPTS' do
-    value node['maven']['mavenrc']['opts']
-    action :create
+libarchive_file basename do
+  path File.join(Chef::Config[:file_cache_path], basename)
+  extract_to node['maven']['extract_to']
+  subscribes :create, "remote_file[#{path}]"
+end
+
+if node['platform_family'] == 'windows'
+  rc_file File.join(Dir.home, 'mavenrc_pre.bat') do
+    type 'bat'
+    options node['maven']['mavenrc']
   end
 else
-  template '/etc/mavenrc' do
-    source 'mavenrc.erb'
-    mode   '0755'
+  link '/usr/local/bin/mvn' do
+    to File.join(node['maven']['extract_to'], "apache-maven-#{node['maven']['version']}")
+  end
+
+  rc_file '/etc/mavenrc' do
+    mode '0644'
+    options node['maven']['mavenrc']
   end
 end

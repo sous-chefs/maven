@@ -1,6 +1,15 @@
-maven Cookbook CHANGELOG
-========================
-This file is used to list changes made in each version of the maven cookbook.
+maven-cookbook
+==============
+This file is used to list the changes made in each release
+of this project.
+
+v2.0.0
+------
+- Rewrites the cookbook to utilize best practices of cookbook design.
+- Adds the *maven_execute* resource for running Maven commands.
+- Adds unit tests for the new and old resources.
+- Installs Maven 3.3.3 by default.
+- Deprecates support for Maven 2.0.
 
 v1.3.0
 ------
