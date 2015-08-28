@@ -1,3 +1,5 @@
+node.default['java']['jdk_version'] = '7'
+node.default['java']['accept_license_agreement'] = true
 include_recipe 'java::default'
 include_recipe 'maven::default'
 

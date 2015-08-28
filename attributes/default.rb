@@ -12,6 +12,6 @@ default['maven']['remote_checksum'] = '3a8dc4a12ab9f3607a1a2097bbab0150c947ad671
 default['maven']['extract_to'] = '/opt'
 
 default['maven']['mavenrc']['M2_HOME'] = '/usr/local/maven'
-default['maven']['mavenrc']['MAVEN_OPTS'] = '-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m -XX:MaxPermSize=192m'
+default['maven']['mavenrc']['MAVEN_OPTS'] = '-Dmaven.repo.local=$HOME/.m2/repository'
 
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven2']

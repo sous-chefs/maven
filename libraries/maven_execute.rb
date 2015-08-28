@@ -20,15 +20,11 @@ module MavenCookbook
       attribute(:group, kind_of: String)
 
       attribute(:command, kind_of: String, name_attribute: true)
-      attribute(:environment, kind_of: Hash, default: { 'PATH' => '/usr/bin/local:/usr/bin:/bin' })
+      attribute(:environment, kind_of: Hash, default: { 'PATH' => '/usr/local/bin:/usr/bin:/bin' })
       attribute(:options, option_collector: true)
 
       action(:run) do
-        command = ['mvn',
-                   new_resource.command,
-                   new_resource.options
-                   .delete_if { |_, v| v.nil? }
-                   .map { |k, v| "-D#{k}=#{v}" }].flatten.map(&:strip)
+        options = new_resource.options.delete_if { |_, v| v.nil? }.map { |kv| '-D' + kv.join('=') }
         notifying_block do
           directory new_resource.directory do
             recursive true
@@ -37,9 +33,13 @@ module MavenCookbook
             mode '0755'
           end
 
-          execute command.join(' ') do
+          bash "mvn #{new_resource.command}" do # ~FC009
+            code ['mvn', new_resource.command, options].flatten.map(&:strip).join(' ')
+            user new_resource.user
+            group new_resource.group
             cwd new_resource.directory
             environment new_resource.environment
+            sensitive true
           end
         end
       end

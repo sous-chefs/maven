@@ -17,7 +17,9 @@ describe MavenCookbook::Resource::MavenArtifact do
         'transitive' => true,
         'packaging' => 'jar',
         'artifactId' => 'spoon',
-        'groupId' => 'com.bloomberg.inf'
+        'groupId' => 'com.bloomberg.inf',
+        'classifier' => nil,
+        'dest' => nil
       })
     end
   end

@@ -20,10 +20,6 @@ describe file('/usr/local/foobar/lib/mm-mysql-2.0.13.pom') do
   it { should be_a_file }
 end
 
-describe file('/usr/local/foobar/lib/solr-foo.war') do
-  it { should be_a_file }
-end
-
 describe file('/etc/mavenrc') do
   it { should be_a_file }
 end

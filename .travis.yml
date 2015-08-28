@@ -2,8 +2,7 @@
 language: ruby
 notifications:
   slack: blpsi:eHp3Czg42iGzaTgG8sAFeD9v
-script:
-  - bundle exec rake travis
+script: bundle exec rake travis
 rvm:
   - 2.1
   - 2.2

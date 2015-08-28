@@ -7,7 +7,10 @@ describe MavenCookbook::Resource::MavenExecute do
       maven_execute 'archetype:generate'
     end
 
-    it { is_expected.to run_execute('mvn archetype:generate') }
+    it do
+      is_expected.to run_bash('mvn archetype:generate')
+      .with(code: 'mvn archetype:generate')
+    end
   end
 
   context 'with some options' do
@@ -20,6 +23,9 @@ describe MavenCookbook::Resource::MavenExecute do
       end
     end
 
-    it { is_expected.to run_execute('mvn archetype:generate -DartifactId=foo -DgroupId=bar') }
+    it do
+      is_expected.to run_bash('mvn archetype:generate')
+      .with(code: 'mvn archetype:generate -DartifactId=foo -DgroupId=bar')
+    end
   end
 end

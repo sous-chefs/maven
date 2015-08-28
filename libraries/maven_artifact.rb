@@ -6,6 +6,7 @@
 # Copyright 2015, Bloomberg Finance L.P.
 #
 require 'poise'
+require 'fileutils'
 
 module MavenCookbook
   module Resource
@@ -26,10 +27,10 @@ module MavenCookbook
       attribute(:destination, kind_of: String)
       attribute(:owner, kind_of: String)
       attribute(:group, kind_of: String)
-      attribute(:mode, kind_of: String)
+      attribute(:mode, kind_of: String, default: '0644')
 
       def friendly_basename
-        [artifact_id, version, classifier].join('-') + '.' + packaging
+        [artifact_id, version, classifier].compact.join('-') + '.' + packaging
       end
 
       action(:install) do
@@ -66,11 +67,11 @@ module MavenCookbook
             end
           end
 
-          file ::File.join(new_resource.destination, new_resource.friendly_basename) do
-            owner new_resource.owner
-            group new_resource.group
-            mode new_resource.mode
-          end if new_resource.destination
+          if new_resource.destination
+            target = ::File.join(new_resource.destination, new_resource.friendly_basename)
+            FileUtils.chown(new_resource.owner, new_resource.group, target)
+            FileUtils.chmod(new_resource.mode.to_i(8), target)
+          end
         end
       end
     end

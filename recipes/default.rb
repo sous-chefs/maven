@@ -15,13 +15,15 @@ artifact_url = node['maven']['remote_url'] % {
 basename = File.basename(artifact_url)
 remote_file File.join(Chef::Config[:file_cache_path], basename) do
   source artifact_url
+  mode '0755'
   checksum node['maven']['remote_checksum']
 end
 
 libarchive_file basename do
+  action :nothing
   path File.join(Chef::Config[:file_cache_path], basename)
   extract_to node['maven']['extract_to']
-  subscribes :create, "remote_file[#{path}]"
+  subscribes :extract, "remote_file[#{path}]"
 end
 
 if node['platform_family'] == 'windows'
@@ -30,8 +32,12 @@ if node['platform_family'] == 'windows'
     options node['maven']['mavenrc']
   end
 else
-  link '/usr/local/bin/mvn' do
+  link node['maven']['mavenrc']['M2_HOME'] do
     to File.join(node['maven']['extract_to'], "apache-maven-#{node['maven']['version']}")
+  end
+
+  link '/usr/local/bin/mvn' do
+    to File.join(node['maven']['mavenrc']['M2_HOME'], 'bin', 'mvn')
   end
 
   rc_file '/etc/mavenrc' do
