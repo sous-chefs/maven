@@ -40,18 +40,30 @@ module MavenCookbook
           # If the destination directory is set on the resource we
           # should attempt to create it with appropriate permissions &
           # ownership.
-          directory new_resource.destination do
-            recursive true
-            owner new_resource.owner
-            group new_resource.group
-            mode '0755'
-          end if new_resource.destination
+          if new_resource.destination
+            directory new_resource.destination do
+              recursive true
+              owner new_resource.owner
+              group new_resource.group
+              mode '0755'
+            end
+
+            ruby_block "set permissions: #{new_resource.friendly_basename}" do
+              action :nothing
+              block do
+                target = ::File.join(new_resource.destination, new_resource.friendly_basename)
+                FileUtils.chown(new_resource.owner, new_resource.group, target)
+                FileUtils.chmod(new_resource.mode.to_i(8), target)
+              end
+            end
+          end
 
           # TODO: (jbellone) It looks like that the correct maven
           # action to run here is going to be :copy or
           # :copy-dependencies. The newer version(s) of this plugin
           # are deprecating the destination bits.
-          maven_execute 'org.apache.maven.plugins:maven-dependency-plugin:2.10:get' do
+          maven_execute new_resource.friendly_basename do
+            command 'org.apache.maven.plugins:maven-dependency-plugin:2.10:get'
             directory new_resource.destination
             user new_resource.owner
             group new_resource.group
@@ -65,12 +77,7 @@ module MavenCookbook
               classifier new_resource.classifier
               remoteRepositories repos if new_resource.repositories
             end
-          end
-
-          if new_resource.destination
-            target = ::File.join(new_resource.destination, new_resource.friendly_basename)
-            FileUtils.chown(new_resource.owner, new_resource.group, target)
-            FileUtils.chmod(new_resource.mode.to_i(8), target)
+            notifies :run, "ruby_block[set permissions: #{new_resource.friendly_basename}]"
           end
         end
       end
