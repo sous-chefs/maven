@@ -8,15 +8,14 @@ executing arbitrary Maven commands. This cookbook assumes that Java
 has already been installed on the system.
 
 ### Installing Java 1.8 and Maven
-The latest version of this cookbook assumes that Java has already
-been installed to the system. If you are using the comunity
-[Java cookbook][1] there is a simple snippet below to install both
-Java 1.8 and Maven.
+This version of the cookbook requires a minimum of Java 1.8 version in
+order to use the default *maven_artifact* resource. In order to
+provide the most flexibility this cookbook _does not_ install
+Java. The community [Java cookbook][1] works very well for this.
 ```ruby
 node.default['java']['jdk_version'] = '8'
 node.default['java']['accept_license_agreement'] = true
-include_recipe 'java::default'
-include_recipe 'maven::default'
+include_recipe 'java::default', 'maven::default'
 ```
 
 ### Downloading Maven Artifacts

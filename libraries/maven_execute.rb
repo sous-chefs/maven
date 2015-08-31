@@ -39,7 +39,7 @@ module MavenCookbook
             group new_resource.group
             cwd new_resource.directory
             environment new_resource.environment
-            sensitive true
+            #sensitive true
           end
         end
       end

@@ -1,4 +1,4 @@
-node.default['java']['jdk_version'] = '7'
+node.default['java']['jdk_version'] = '8'
 node.default['java']['accept_license_agreement'] = true
 include_recipe 'java::default'
 include_recipe 'maven::default'
@@ -27,7 +27,8 @@ maven_artifact 'mysql-connector-java' do
   group_id 'mysql'
   version  '5.1.19'
   mode     '0755'
-  owner    'foobarbaz'
+  owner 'foobarbaz'
+  group 'foobarbaz'
   destination     '/usr/local/foobar/lib/'
   notifies :create, 'file[/usr/local/notifyOne]'
 end
@@ -38,6 +39,7 @@ maven_artifact 'otherNameThanBefore' do
   version     '5.1.19'
   mode        '0755'
   owner       'foobarbaz'
+  group       'foobarbaz'
   destination        '/usr/local/foobar/lib/'
   notifies    :create, 'file[/usr/local/notifyTwo]'
 end
