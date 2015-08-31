@@ -1,4 +1,9 @@
 # maven-cookbook
+[![Join the chat at https://gitter.im/opscode-cookbooks/maven](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/opscode-cookbooks/maven?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+![Release](http://img.shields.io/github/release/opscode-cookbooks/maven.svg)
+[![Build Status](http://img.shields.io/travis/opscode-cookbooks/maven.svg)](http://travis-ci.org/opscode-cookbooks/maven)
+[![Code Coverage](http://img.shields.io/coveralls/opscode-cookbooks/maven.svg)](https://coveralls.io/r/opscode-cookbooks/maven)
+
 [Application cookbook][0] which installs and configures [Maven][1].
 
 ## Basic Usage
