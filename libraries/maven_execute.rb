@@ -16,12 +16,19 @@ module MavenCookbook
       provides(:maven_execute)
 
       attribute(:directory, kind_of: String, default: '/var/run/java')
-      attribute(:user, kind_of: String)
+      attribute(:user, kind_of: String, default: 'root')
       attribute(:group, kind_of: String)
 
       attribute(:command, kind_of: String, name_attribute: true)
-      attribute(:environment, kind_of: Hash, default: { 'PATH' => '/usr/local/bin:/usr/bin:/bin' })
+      attribute(:environment, kind_of: Hash, default: lazy { default_environment })
       attribute(:options, option_collector: true)
+
+      def default_environment
+        {
+          'PATH' => '/usr/local/bin:/usr/bin:/bin',
+          'HOME' => Dir.home(user)
+        }
+      end
 
       action(:run) do
         options = new_resource.options.delete_if { |_, v| v.nil? }.map { |kv| '-D' + kv.join('=') }
@@ -33,13 +40,13 @@ module MavenCookbook
             mode '0755'
           end
 
-          bash "mvn #{new_resource.command}" do # ~FC009
-            code ['mvn', new_resource.command, options].flatten.map(&:strip).join(' ')
+          execute "mvn #{new_resource.command}" do # ~FC009
+            command ['mvn', new_resource.command, options].flatten.map(&:strip).join(' ')
             user new_resource.user
             group new_resource.group
             cwd new_resource.directory
             environment new_resource.environment
-            #sensitive true
+            sensitive true
           end
         end
       end
