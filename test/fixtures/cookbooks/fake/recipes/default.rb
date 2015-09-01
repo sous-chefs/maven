@@ -1,3 +1,6 @@
+node.default['java']['jdk_version'] = '8'
+node.default['java']['accept_license_agreement'] = true
+include_recipe 'java::default'
 include_recipe 'maven::default'
 
 user 'foobarbaz'
@@ -20,39 +23,41 @@ file '/usr/local/notifyTwo' do
 end
 
 # Basic test
-maven 'mysql-connector-java' do
+maven_artifact 'mysql-connector-java' do
   group_id 'mysql'
   version  '5.1.19'
   mode     '0755'
-  owner    'foobarbaz'
-  dest     '/usr/local/foobar/lib/'
+  owner 'foobarbaz'
+  group 'foobarbaz'
+  destination     '/usr/local/foobar/lib/'
   notifies :create, 'file[/usr/local/notifyOne]'
 end
 
-maven 'otherNameThanBefore' do
+maven_artifact 'otherNameThanBefore' do
   artifact_id 'mysql-connector-java'
   group_id    'mysql'
   version     '5.1.19'
   mode        '0755'
   owner       'foobarbaz'
-  dest        '/usr/local/foobar/lib/'
+  group       'foobarbaz'
+  destination        '/usr/local/foobar/lib/'
   notifies    :create, 'file[/usr/local/notifyTwo]'
 end
 
 # Test from alternate repo
-maven 'java persistence library'  do
+maven_artifact 'java persistence library'  do
   artifact_id  'javax.persistence'
   group_id     'org.eclipse.persistence'
   version      '2.0.0'
   repositories %w(http://mirrors.ibiblio.org/pub/mirrors/maven2/)
-  dest         '/usr/local/foobar/lib'
+  destination '/usr/local/foobar/lib'
 end
 
 # test from multiple repositories
-maven 'postgresql' do
+maven_artifact 'postgresql' do
   group_id 'postgresql'
   version  '9.0-801.jdbc4'
-  dest     '/usr/local/foobar/lib'
+  destination '/usr/local/foobar/lib'
   repositories [
     'http://mirrors.ibiblio.org/pub/mirrors/maven2/',
     'http://repo1.maven.apache.org/maven2'
@@ -60,19 +65,9 @@ maven 'postgresql' do
 end
 
 # Test downloading hudson plugin and use old alias
-maven 'mm-mysql'  do
-  groupId   'mm-mysql'
+maven_artifact 'mm-mysql'  do
+  group_id   'mm-mysql'
   version   '2.0.13'
   packaging 'pom'
-  dest      '/usr/local/foobar/lib'
-end
-
-maven 'solr-foo' do
-  artifact_id 'solr'
-  groupId     'org.apache.solr'
-  version     '3.6.1'
-  packaging   'war'
-  dest        '/usr/local/foobar/lib'
-  action      :put
-  transitive  true
+  destination '/usr/local/foobar/lib'
 end

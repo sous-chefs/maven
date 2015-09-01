@@ -1,7 +1,17 @@
+---
+language: ruby
+notifications:
+  slack: bloomberg-rnd:eHp3Czg42iGzaTgG8sAFeD9v
+script: bundle exec rake travis
 rvm:
-  - 1.9.3
-  - 2.0.0
-script:
-  - bundle exec foodcritic -f any .
-  - bundle exec rspec --color --format progress
-  - bundle exec rubocop
+  - 2.1
+  - 2.2
+cache:
+  directories:
+    - vendor/bundle
+branches:
+  only:
+    - master
+builder_args: --jobs 7
+matrix:
+  fast_finish: true
