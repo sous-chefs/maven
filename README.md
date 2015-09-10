@@ -1,5 +1,9 @@
 maven Cookbook
 ==============
+
+[![Build Status](https://travis-ci.org/chef-cookbooks/maven.svg?branch=master)](http://travis-ci.org/chef-cookbooks/maven)
+[![Cookbook Version](https://img.shields.io/cookbook/v/maven.svg)](https://supermarket.chef.io/cookbooks/maven)
+
 Install and configure maven2 and maven3 from the binaries provided by the maven project.
 
 Provides the `maven` LWRP for pulling a maven artifact from a mave repository and placing it in an arbitrary location.
@@ -103,7 +107,7 @@ License & Authors
 - Author:: Leif Madsen (<lmadsen@thinkingphones.com>)
 
 ```text
-Copyright 2010-2013, Chef Software, Inc.
+Copyright 2010-2015, Chef Software, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
