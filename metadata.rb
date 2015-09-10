@@ -16,3 +16,6 @@ supports 'fedora'
 supports 'redhat'
 supports 'ubuntu'
 supports 'windows'
+
+source_url 'https://github.com/chef-cookbooks/maven' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-cookbooks/maven/issues' if respond_to?(:issues_url)
