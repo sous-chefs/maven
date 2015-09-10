@@ -34,7 +34,7 @@ ark 'maven' do
   append_env_path true
 end
 
-if node['platform_family'] === 'windows'
+if node['platform_family'] == 'windows'
   env 'M2_HOME' do
     value node['maven']['m2_home']
     action :create

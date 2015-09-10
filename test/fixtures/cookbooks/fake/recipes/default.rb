@@ -40,7 +40,7 @@ maven 'otherNameThanBefore' do
 end
 
 # Test from alternate repo
-maven 'java persistence library'  do
+maven 'java persistence library' do
   artifact_id  'javax.persistence'
   group_id     'org.eclipse.persistence'
   version      '2.0.0'
@@ -60,7 +60,7 @@ maven 'postgresql' do
 end
 
 # Test downloading hudson plugin and use old alias
-maven 'mm-mysql'  do
+maven 'mm-mysql' do
   groupId   'mm-mysql'
   version   '2.0.13'
   packaging 'pom'
