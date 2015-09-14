@@ -6,6 +6,7 @@
 # Copyright 2015, Bloomberg Finance L.P.
 #
 include_recipe 'libarchive::default'
+include_recipe 'java::default'
 
 artifact_url = node['maven']['remote_url'] % {
   major_version: node['maven']['version'].to_i,

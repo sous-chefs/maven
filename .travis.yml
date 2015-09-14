@@ -1,17 +1,13 @@
 ---
 language: ruby
-notifications:
-  slack: bloomberg-rnd:eHp3Czg42iGzaTgG8sAFeD9v
+sudo: false
 script: bundle exec rake travis
 rvm:
   - 2.1
   - 2.2
-cache:
-  directories:
-    - vendor/bundle
+cache: bundler
 branches:
   only:
     - master
-builder_args: --jobs 7
 matrix:
   fast_finish: true
