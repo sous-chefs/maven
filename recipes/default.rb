@@ -2,7 +2,7 @@
 # Cookbook: maven
 # License: Apache 2.0
 #
-# Copyright 2010-2015, Chef Software, Inc.
+# Copyright 2008-2015, Chef Software, Inc.
 # Copyright 2015, Bloomberg Finance L.P.
 #
 include_recipe 'libarchive::default'

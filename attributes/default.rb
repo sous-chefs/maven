@@ -2,7 +2,7 @@
 # Cookbook: maven
 # License: Apache 2.0
 #
-# Copyright 2010-2013, Chef Software, Inc.
+# Copyright 2008-2015, Chef Software, Inc.
 # Copyright 2015, Bloomberg Finance L.P.
 #
 default['maven']['version'] = '3.3.3'
