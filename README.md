@@ -11,15 +11,16 @@ Provides the `maven` LWRP for pulling a maven artifact from a mave repository an
 
 Requirements
 ------------
-### Platforms
-- Debian
-- Ubuntu
-- CentOS
-- Red Hat
+#### Platforms
+- Debian/Ubuntu
+- RHEL/CentOS/Scientific/Amazon/Oracle
 - Fedora
 - Windows
 
-The following Chef Software cookbooks are dependencies:
+#### Chef
+- Chef 11+
+
+#### Cookbooks
 - java - this cookbook not only depends on the java virtual machine but it also depends on the java_ark LWRP present in the java cookbooks
 - ark - used to unpack the maven tarball
 
