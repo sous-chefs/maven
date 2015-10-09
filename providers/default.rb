@@ -50,7 +50,7 @@ def create_command_string(artifact_file, new_resource)
   repos = '-DremoteRepositories=' + new_resource.repositories.join(',')
   packaging = '-Dpackaging=' + new_resource.packaging
   classifier = '-Dclassifier=' + new_resource.classifier if new_resource.classifier
-  plugin_version = '2.10'
+  plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
   transitive = '-Dtransitive=' + new_resource.transitive.to_s
   %Q{mvn #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos} #{transitive}}
