@@ -2,6 +2,25 @@ maven Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the maven cookbook.
 
+v1.3.1
+------
+NOTE: This will be the last release with Maven 2 support
+
+* Added requirements section to the readme to clarify what distros are supported and the requirement of Chef 11+
+* Updated .gitignore file
+* Added Chef standard Rubocop config
+* Updated Travis CI testing to use Chef DK
+* Updated Berksfile to 3.x format
+* Removed the version pin on apt in the Berksfile
+* Updated Gemfile with the latest development dependencies
+* Updated contributing and testing docs
+* Added maintainers.md and maintainers.toml files
+* Added Travis and cookbook version badges to the readme
+* Added a Rakefile for simplified testing
+* Added a Chefignore file
+* Resolved Rubocop warnings
+* Added source_url and issues_url to the metadata
+
 v1.3.0
 ------
 - Adding Windows support
@@ -12,8 +31,7 @@ v1.2.0
 
 v1.1.0
 ------
-[COOK-3849] - Update maven 3 to 3.1.1
-
+- [COOK-3849] - Update maven 3 to 3.1.1
 
 v1.0.0
 ------
