@@ -31,7 +31,7 @@ ark 'maven' do
   home_dir        node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
   version         node['maven'][mvn_version]['version']
-  append_env_path true
+  append_env_path node['maven']['setup_bin']
 end
 
 if node['platform_family'] == 'windows'
