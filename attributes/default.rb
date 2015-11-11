@@ -23,8 +23,7 @@
 
 default['maven']['m2_home'] = '/usr/local/maven'
 default['maven']['mavenrc']['opts'] = '-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m -XX:MaxPermSize=192m'
-default['maven']['version'] = '3.3.3'
-default['maven']['url'] = "http://apache.mirrors.tds.net/maven/maven-3/#{node['maven']['version']}/binaries/apache-maven-#{node['maven']['version']}-bin.tar.gz"
+default['maven']['url'] = 'http://apache.mirrors.tds.net/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz'
 default['maven']['checksum'] = '3a8dc4a12ab9f3607a1a2097bbab0150c947ad6719d8f1bb6d5b47d0fb0c4779'
 default['maven']['plugin_version'] = '2.4'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven']
