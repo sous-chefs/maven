@@ -5,7 +5,7 @@
 # Author:: Seth Chisamore (<schisamo@chef.io>)
 # Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 #
-# Copyright:: 2010-2012, Chef Software, Inc.
+# Copyright:: 2010-2015, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,14 +23,12 @@
 include_recipe 'java::default' if node['maven']['install_java']
 include_recipe 'ark::default'
 
-mvn_version = node['maven']['version'].to_s
-
 ark 'maven' do
-  url             node['maven'][mvn_version]['url']
-  checksum        node['maven'][mvn_version]['checksum']
-  home_dir        node['maven']['m2_home']
+  url node['maven']['url']
+  checksum node['maven']['checksum']
+  home_dir node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
-  version         node['maven'][mvn_version]['version']
+  version node['maven']['version']
   append_env_path true
 end
 
