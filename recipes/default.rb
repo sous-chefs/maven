@@ -22,15 +22,17 @@
 
 include_recipe 'ark::default'
 
+# install maven via ark
 ark 'maven' do
+  version node['maven']['version']
   url node['maven']['url']
   checksum node['maven']['checksum']
   home_dir node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
-  version node['maven']['version']
   append_env_path true
 end
 
+# setup environmental variables
 if node['platform_family'] == 'windows'
   env 'M2_HOME' do
     value node['maven']['m2_home']
