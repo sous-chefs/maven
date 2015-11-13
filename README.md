@@ -34,18 +34,19 @@ Attributes
 * `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
 * `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
 * `node['maven']['setup_bin']` - Whether or not to put mvn on your system path, defaults to false
-* `node['maven']['mavenrc']['opts']` - Value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m -XX:MaxPermSize=192m`
-* `node['maven']['install_java']` - Whether or not to use the Java community cookbook to install Java. Defaults to `true`.
+* `node['maven']['mavenrc']['opts']` - Value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
 
 
 Recipes
 -------
 ### default
-Includes the java recipe, and then installs maven according to the version specified by the `node['maven']['version']` attribute.
+Installs maven according to the version specified by the `node['maven']['version']` attribute.
 
 Usage
 -----
-Simply include the recipe where you want Apache Maven installed.
+Install a working Java 8 JRE (Oracle or OpenJDK) either using the Java cookbook or your own cookbooks
+
+Include the recipe where you want Apache Maven installed.
 
 The maven lwrp has two actions, `:install` and `:put`. They are essentially the same accept that the install action will name the the downloaded file `artifact_id-version.packaging`. For example, the mysql jar would be named mysql-5.1.19.jar.
 
