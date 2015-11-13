@@ -28,4 +28,3 @@ default['maven']['checksum'] = '3a8dc4a12ab9f3607a1a2097bbab0150c947ad6719d8f1bb
 default['maven']['plugin_version'] = '2.4'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven']
 default['maven']['setup_bin'] = false
-default['maven']['install_java'] = true

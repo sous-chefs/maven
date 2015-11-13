@@ -20,7 +20,6 @@
 # limitations under the License.
 #
 
-include_recipe 'java::default' if node['maven']['install_java']
 include_recipe 'ark::default'
 
 ark 'maven' do

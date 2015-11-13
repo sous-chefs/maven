@@ -8,6 +8,7 @@ Install and configure Apache Maven from the binaries provided by the Maven proje
 
 Provides the `maven` LWRP for pulling a maven artifact from a mave repository and placing it in an arbitrary location.
 
+Note:  This cookbook does not handle the installation of Java, but Maven requires a working JDK 8 release. You'll need to use the Java cookbook to install OpenJDK or Oracle's JRE depending on your platform.
 
 Requirements
 ------------
@@ -21,7 +22,7 @@ Requirements
 - Chef 11+
 
 #### Cookbooks
-- java - this cookbook not only depends on the java virtual machine but it also depends on the java_ark LWRP present in the java cookbooks
+- java - java_ark LWRP used by the Maven LWRP
 - ark - used to unpack the maven tarball
 
 
