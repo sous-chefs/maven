@@ -2,9 +2,13 @@ maven Cookbook CHANGELOG
 ========================
 This file is used to list changes made in each version of the maven cookbook.
 
-v2.0.0
-------
+v2.0.1 (2015-11-16)
+-------------------
+* Added Chefspec matchers
+* Updated the LWRP with a new attribute `group` that defaults to node['root_group'] which enables support for platforms such as FreeBSD and OS X where root's group is not root.
 
+v2.0.0 (2015-11-16)
+-------------------
 BREAKING CHANGES:
 * Support for Maven 2 has been removed. In doing so the attribute structure has been changed.  The `version` attribute now has the complete version string not just the major version.  The `url` and 'checksum' attributes are now top level attributes instead of being under the individual maven versions.  See the readme for the up to date attribute structure.
 * Java is no longer installed by this cookbook.  Maven 3 requires JRE 8, which may require installing Oracle Java depending on the age of your platform. The user need to handle the installation of Java by using the java cookbook or their own wrapper cookbook.
