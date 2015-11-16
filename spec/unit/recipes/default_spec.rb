@@ -1,10 +1,9 @@
 require 'spec_helper'
 
-describe 'maven::default' do
-  let(:chef_run) { ChefSpec::ChefRunner.new(cookbook_path: ['vendor/cookbooks']).converge(described_recipe) }
-
-  it 'includes the java recipe' do
-    expect(chef_run).to include_recipe('java::default')
+describe 'default recipe on Ubuntu 14.04' do
+  let(:chef_run) do
+    ChefSpec::ServerRunner.new do |node|
+    end.converge('maven::default')
   end
 
   it 'includes the ark recipe' do

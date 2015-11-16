@@ -2,12 +2,12 @@ name             'maven'
 maintainer       'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license          'Apache 2.0'
-description      'Installs maven 2 or 3 and includes a maven resource.'
+description      'Installs Apache Maven includes a resource for installing artifacts from mave.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.3.1'
+version          '2.0.0'
 
-depends 'ark',  '~> 0.4'
-depends 'java', '~> 1.13'
+depends 'ark',  '~> 0.9'
+depends 'java', '~> 1.20'
 depends 'windows'
 
 supports 'centos'

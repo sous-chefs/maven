@@ -4,10 +4,11 @@ maven Cookbook
 [![Build Status](https://travis-ci.org/chef-cookbooks/maven.svg?branch=master)](http://travis-ci.org/chef-cookbooks/maven)
 [![Cookbook Version](https://img.shields.io/cookbook/v/maven.svg)](https://supermarket.chef.io/cookbooks/maven)
 
-Install and configure maven2 and maven3 from the binaries provided by the maven project.
+Install and configure Apache Maven from the binaries provided by the Maven project.
 
 Provides the `maven` LWRP for pulling a maven artifact from a mave repository and placing it in an arbitrary location.
 
+Note:  This cookbook does not handle the installation of Java, but Maven requires a working JDK 8 release. You'll need to use the Java cookbook to install OpenJDK or Oracle's JRE depending on your platform.
 
 Requirements
 ------------
@@ -21,36 +22,31 @@ Requirements
 - Chef 11+
 
 #### Cookbooks
-- java - this cookbook not only depends on the java virtual machine but it also depends on the java_ark LWRP present in the java cookbooks
+- java - java_ark LWRP used by the Maven LWRP
 - ark - used to unpack the maven tarball
 
 
 Attributes
 ----------
-* `node['maven']['version']` - defaults to 3, specifies the major version of maven to install.
+* `node['maven']['version']` - specifies the version of maven to install.
 * `node['maven']['m2_home']` - defaults to  '/usr/local/maven/'
-* `node['maven']['2']['url']` - the download url for maven2
-* `node['maven']['2']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
-* `node['maven']['3']['url']` - download url for maven3
-* `node['maven']['3']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
+* `node['maven']['url']` - the download url for maven
+* `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
 * `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
 * `node['maven']['setup_bin']` - Whether or not to put mvn on your system path, defaults to false
-* `node['maven']['mavenrc']['opts']` - Value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m -XX:MaxPermSize=192m`
-* `node['maven']['install_java']` - Whether or not to use the Java community cookbook to install Java. Defaults to `true`.
+* `node['maven']['mavenrc']['opts']` - Value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
 
 
 Recipes
 -------
 ### default
-Includes the java recipe, and then installs maven according to the version specified by the `node['maven']['version']` attribute.
-
-### test
-**For testing only**. From the development repository, use test-kitchen to test that the LWRP is operating with this recipe. Also contains example usage of the LWRP.
-
+Installs maven according to the version specified by the `node['maven']['version']` attribute.
 
 Usage
 -----
-Simply include the recipe where you want Apache Maven installed.
+Install a working Java 8 JRE (Oracle or OpenJDK) either using the Java cookbook or your own cookbooks
+
+Include the recipe where you want Apache Maven installed.
 
 The maven lwrp has two actions, `:install` and `:put`. They are essentially the same accept that the install action will name the the downloaded file `artifact_id-version.packaging`. For example, the mysql jar would be named mysql-5.1.19.jar.
 
@@ -103,13 +99,15 @@ end
 
 License & Authors
 -----------------
-- Author:: Seth Chisamore (<schisamo@chef.io>)
-- Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
-- Author:: Leif Madsen (<lmadsen@thinkingphones.com>)
+**Author:** Seth Chisamore (<schisamo@chef.io>)
 
-```text
-Copyright 2010-2015, Chef Software, Inc.
+**Author:** Bryan W. Berry (<bryan.berry@gmail.com>)
 
+**Author:** Leif Madsen (<lmadsen@thinkingphones.com>)
+
+**Copyright:** 2008-2015, Chef Software, Inc.
+
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
