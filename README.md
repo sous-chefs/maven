@@ -64,6 +64,7 @@ Providers/Resources
 - `classifier` - distinguishes artifacts that were built from the same POM but differ in context
 - `repositories` - array of maven repositories to use, defaults to ["http://repo1.maven.apache.org/maven2"]
 - `owner` - the owner of the resulting file, default is root
+- `group` - the group of the resulting file, default is root's group
 - `mode` - integer value for file permissions, default is 0644
 - `transitive` - whether to resolve dependencies transitively, defaults to false. Please note: Event true will only place one artifact in dest. All others are downloaded to the local repository.
 
