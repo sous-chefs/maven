@@ -17,14 +17,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
 # This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
 
 def load_current_resource
   @current_resource = Chef::Resource::MavenSettings.new(new_resource.path)
-  @current_resource.value new_resource.value  
-    
+  @current_resource.value new_resource.value
+
   @current_resource
 end
 
@@ -37,33 +35,31 @@ end
 
 private
 
-  def path_value_equals?(value)    
-    hashed_settings = get_maven_settings_hash
-    
-    *path_elements, setting_to_update = new_resource.path.split(".")
-    path_elements.inject(hashed_settings, :fetch)[setting_to_update] == value
-  end
+def path_value_equals?(value)
+  hashed_settings = maven_settings_hash
 
-  def get_maven_settings_hash
-     require 'nori'
-     Nori.new(:parser => :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", "r").read)  
-  end
+  *path_elements, setting_to_update = new_resource.path.split('.')
+  path_elements.inject(hashed_settings, :fetch)[setting_to_update] == value
+end
 
+def maven_settings_hash
+  require 'nori'
+  Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
+end
 
+def update_maven_settings
+  require 'gyoku'
 
-  def update_maven_settings
-    require 'gyoku'
-    
-    hashed_settings = get_maven_settings_hash    
+  hashed_settings = maven_settings_hash
 
-    *path_elements, setting_to_update = new_resource.path.split(".")
-    path_elements.inject(hashed_settings, :fetch)[setting_to_update] = new_resource.value
-    
-    # Convert back to xml
-    xmlized_updated_settings = Gyoku.xml(hashed_settings)
+  *path_elements, setting_to_update = new_resource.path.split('.')
+  path_elements.inject(hashed_settings, :fetch)[setting_to_update] = new_resource.value
 
-    # Empty tags end up with attribute xsi:nil="true", let's clean that up
-    xmlized_updated_settings.gsub!(/xsi:nil="true"/, '')
+  # Convert back to xml
+  xmlized_updated_settings = Gyoku.xml(hashed_settings)
 
-    ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", "w+").write(xmlized_updated_settings)    
-  end
+  # Empty tags end up with attribute xsi:nil="true", let's clean that up
+  xmlized_updated_settings.gsub!(/xsi:nil="true"/, '')
+
+  ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'w+').write(xmlized_updated_settings)
+end

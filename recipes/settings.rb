@@ -21,11 +21,10 @@
 
 # install gems required for updating settings
 
-chef_gem "nori" do 
-	action :install
+chef_gem 'nori' do
+  action :install
 end
 
-chef_gem "gyoku" do 
-	action :install
+chef_gem 'gyoku' do
+  action :install
 end
-
