@@ -42,6 +42,9 @@ Recipes
 ### default
 Installs maven according to the version specified by the `node['maven']['version']` attribute.
 
+### settings
+Installs gems required to parse settings.xml to ruby and hash and back to xml
+
 Usage
 -----
 Install a working Java 8 JRE (Oracle or OpenJDK) either using the Java cookbook or your own cookbooks
@@ -55,6 +58,35 @@ Use the put action when you want to explicitly control the name of the downloade
 
 Providers/Resources
 -------------------
+
+## maven\_settings
+
+Resource provider for modifying the maven settings.
+
+### Actions
+Action  | Description                          | Default
+------- |-------------                         |---------
+update  | Updates a global maven setting to a new value. | Yes
+
+### Attributes
+Attribute  | Description                                  | Type                          | Default
+---------  |-------------                                 |-----                          |--------
+path       | Period '.' delimited path to element of the settings that is going to be changed. | String                        | name
+value      | The new value to update the path to.                     | String, TrueClass, FalseClass, Hash |
+
+In order to use this resource you first need to run `settings` recipe which will installed required bury gems for you. Find below exampl on how to update proxy in settings.xml
+`````
+maven_settings "settings.proxies" do
+  value "proxy" => {
+    "active" => true,
+    "protocaol" => "http",
+    "host" => "proxy.myorg.com",
+    "port" => 80,
+    "nonProxyHosts" => ".myorg.com"
+  }
+end
+`````
+
 ### maven
 - `artifact_id` - if this is not specified, the resource's name is used
 - `group_id` - group_id for the artifact
