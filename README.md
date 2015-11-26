@@ -65,7 +65,7 @@ value     | The new value to update the path to.                                
 
 In order to use this resource you first need to run `settings` recipe which will installed required bury gems for you. Find below exampl on how to update proxy in settings.xml
 
-```
+```ruby
 maven_settings "settings.proxies" do
   value "proxy" => {
     "active" => true,
