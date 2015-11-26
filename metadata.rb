@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@chef.io'
 license          'Apache 2.0'
 description      'Installs Apache Maven includes a resource for installing artifacts from mave.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '2.0.1'
+version          '2.1.0'
 
 depends 'ark',  '~> 0.9'
 depends 'java', '~> 1.20'
