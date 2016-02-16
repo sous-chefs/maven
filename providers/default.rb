@@ -40,15 +40,13 @@ def create_command_string(artifact_file, new_resource)
 end
 
 def get_mvn_artifact(action, new_resource)
-  if action == 'put'
-    artifact_file_name = "#{new_resource.name}.#{new_resource.packaging}"
-  else
-    artifact_file_name = if new_resource.classifier.nil?
-                           "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
-                         else
-                           "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
-                         end
-  end
+  artifact_file_name = if action == 'put'
+                         "#{new_resource.name}.#{new_resource.packaging}"
+                       elsif new_resource.classifier.nil?
+                         "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+                       else
+                         "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+                       end
 
   Dir.mktmpdir('chef_maven_lwrp') do |tmp_dir|
     tmp_file = ::File.join(tmp_dir, artifact_file_name)
