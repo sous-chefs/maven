@@ -18,8 +18,9 @@ Note:  This cookbook does not handle the installation of Java, but Maven require
 - Chef 11+
 
 ### Cookbooks
-- java - java_ark LWRP used by the Maven LWRP
+- java - java_ark custom resource used by the Maven LWRP
 - ark - used to unpack the maven tarball
+- windows - used on windows platform
 
 ## Attributes
 - `node['maven']['version']` - specifies the version of maven to install.
@@ -27,8 +28,8 @@ Note:  This cookbook does not handle the installation of Java, but Maven require
 - `node['maven']['url']` - the download url for maven
 - `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
 - `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
-- `node['maven']['setup_bin']` - Whether or not to put mvn on your system path, defaults to false
-- `node['maven']['mavenrc']['opts']` - Value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
+- `node['maven']['setup_bin']` - whether or not to put mvn on your system path, defaults to false
+- `node['maven']['mavenrc']['opts']` - value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
 
 ## Recipes
 ### default
@@ -126,7 +127,7 @@ end
 
 **Author:** Leif Madsen ([lmadsen@thinkingphones.com](mailto:lmadsen@thinkingphones.com))
 
-**Copyright:** 2008-2015, Chef Software, Inc.
+**Copyright:** 2008-2016, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
