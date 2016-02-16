@@ -1,6 +1,12 @@
 # maven Cookbook CHANGELOG
 This file is used to list changes made in each version of the maven cookbook.
 
+## v2.1.1 (2016-02-16)
+- Increase the ark version pin to ~1.0 to bring in the last 2 years of ark changes
+- Require the latest java cookbook to fix install issues on Ubuntu/Debian and to support the latest OpenJDK releases
+- Updated all testing dependencies
+- Updated the platforms that are tested in Test Kitchen
+
 ## v2.1.0 (2015-11-25)
 - Added a new settings LWRP for updating maven settings. See the readme for details
 - Add the group lwrp property to the readme
