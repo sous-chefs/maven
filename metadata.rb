@@ -10,10 +10,12 @@ depends 'ark',  '~> 0.9'
 depends 'java', '~> 1.20'
 depends 'windows'
 
+supports 'amazon'
 supports 'centos'
 supports 'debian'
 supports 'fedora'
 supports 'redhat'
+supports 'scientific'
 supports 'ubuntu'
 supports 'windows'
 
