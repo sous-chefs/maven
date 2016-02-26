@@ -1,3 +1,6 @@
+# make sure we have java installed
+include_recipe 'java'
+
 include_recipe 'maven::default'
 
 user 'foobarbaz'
