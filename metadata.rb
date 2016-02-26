@@ -6,9 +6,9 @@ description      'Installs Apache Maven includes a resource for installing artif
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '2.1.1'
 
-depends 'ark',  '~> 1.0'
-depends 'java', '~> 1.38'
-depends 'windows'
+depends 'ark',  '>= 1.0'
+depends 'java', '>= 1.38'
+depends 'windows', '>= 1.39.1'
 
 supports 'amazon'
 supports 'centos'
