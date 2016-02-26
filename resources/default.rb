@@ -19,6 +19,7 @@
 #
 
 actions :install, :put
+default_action :install
 
 attribute :artifact_id,  kind_of: String
 attribute :group_id,     kind_of: String, required: true
@@ -40,5 +41,4 @@ def initialize(*args)
   # we can't use the node properties when initially specifying the resource
   @artifact_id ||= @name
   @repositories ||= node['maven']['repositories']
-  @action = :install
 end
