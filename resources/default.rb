@@ -29,6 +29,7 @@ attribute :packaging,    kind_of: String, default: 'jar'
 attribute :classifier,   kind_of: String
 attribute :owner,        kind_of: String, default: 'root'
 attribute :group,        kind_of: String, default: node['root_group']
+attribute :timeout,      kind_of: Integer, default: 600
 attribute :mode,         kind_of: [Integer, String], default: '0644'
 attribute :repositories, kind_of: Array
 attribute :transitive,   kind_of: [TrueClass, FalseClass], default: false
