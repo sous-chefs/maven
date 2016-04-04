@@ -19,6 +19,8 @@
 
 # This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
 
+use_inline_resources
+
 def load_current_resource
   @current_resource = Chef::Resource::MavenSettings.new(new_resource.path)
   @current_resource.value new_resource.value

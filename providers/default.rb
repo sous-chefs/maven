@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+use_inline_resources
+
 require 'chef/mixin/shell_out'
 require 'chef/mixin/checksum'
 require 'fileutils'
