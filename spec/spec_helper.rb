@@ -1,5 +1,7 @@
 require 'chefspec'
-require_relative 'support/matchers/ark_matchers'
 require 'chefspec/berkshelf'
 
-at_exit { ChefSpec::Coverage.report! }
+RSpec.configure do |config|
+  config.color = true
+  config.log_level = :error
+end
