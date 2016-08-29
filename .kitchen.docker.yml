@@ -94,17 +94,8 @@ platforms:
     pid_one_command: /bin/systemd
     intermediate_instructions:
       - RUN zypper --non-interactive install aaa_base perl-Getopt-Long-Descriptive which hostname
+
 suites:
-  - name: default
-    run_list:
-      - recipe[java::default]
-      - recipe[maven::default]
-    attributes:
-      java:
-        jdk_version: 8
-        install_flavor: oracle
-        oracle:
-          accept_oracle_download_terms: true
   - name: resource
     run_list:
       - recipe[test::default]
