@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'default recipe on Ubuntu 14.04' do
+describe 'default recipe' do
   let(:chef_run) do
     ChefSpec::ServerRunner.new do |node|
     end.converge('maven::default')
