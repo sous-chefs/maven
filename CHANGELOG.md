@@ -2,6 +2,14 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 3.0.0 (2016-09-03)
+- Resolve rubocop warnings
+- Add use_inline_resources to the providers
+- Testing updates
+- Use inspec and remove apt cookbook from testing
+- Require Chef 12
+- Remove the Windows cookbook dep which isn't needed in Chef 12
+
 ## v2.2.0 (2016-04-04)
 
 - Add timeout value to the maven resource
