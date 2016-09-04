@@ -4,34 +4,21 @@ driver:
 provisioner:
   name: chef_zero
 
+verifier:
+  name: inspec
+
 platforms:
   - name: centos-5.11
   - name: centos-6.8
   - name: centos-7.2
   - name: debian-7.11
-    run_list: apt::default
   - name: debian-8.5
-    run_list: apt::default
   - name: fedora-24
     run_list: yum::dnf_yum_compat
   - name: ubuntu-12.04
-    run_list: apt::default
   - name: ubuntu-14.04
-    run_list: apt::default
   - name: ubuntu-16.04
-    run_list: apt::default
-
 suites:
-  - name: default
-    run_list:
-      - recipe[java::default]
-      - recipe[maven::default]
-    attributes:
-      java:
-        jdk_version: 8
-        install_flavor: oracle
-        oracle:
-          accept_oracle_download_terms: true
   - name: resource
     run_list:
       - recipe[test::default]

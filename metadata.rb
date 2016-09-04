@@ -8,7 +8,6 @@ version          '2.2.0'
 
 depends 'ark',  '>= 1.0'
 depends 'java', '>= 1.38'
-depends 'windows', '>= 1.39.1'
 
 supports 'amazon'
 supports 'centos'
@@ -19,7 +18,7 @@ supports 'scientific'
 supports 'ubuntu'
 supports 'windows'
 
-source_url 'https://github.com/chef-cookbooks/maven' if respond_to?(:source_url)
-issues_url 'https://github.com/chef-cookbooks/maven/issues' if respond_to?(:issues_url)
+source_url 'https://github.com/chef-cookbooks/maven'
+issues_url 'https://github.com/chef-cookbooks/maven/issues'
 
-chef_version '>= 11' if respond_to?(:chef_version)
+chef_version '>= 12' if respond_to?(:chef_version)

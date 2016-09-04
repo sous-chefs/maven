@@ -1,44 +1,59 @@
 # maven Cookbook
+
 [![Build Status](https://travis-ci.org/chef-cookbooks/maven.svg?branch=master)](http://travis-ci.org/chef-cookbooks/maven) [![Cookbook Version](https://img.shields.io/cookbook/v/maven.svg)](https://supermarket.chef.io/cookbooks/maven)
 
 Install and configure Apache Maven from the binaries provided by the Maven project.
 
 Provides the `maven` LWRP for pulling a maven artifact from a mave repository and placing it in an arbitrary location.
 
-Note:  This cookbook does not handle the installation of Java, but Maven requires a working JDK 8 release. You'll need to use the Java cookbook to install OpenJDK or Oracle's JRE depending on your platform.
+Note: This cookbook does not handle the installation of Java, but Maven requires a working JDK 8 release. You'll need to use the Java cookbook to install OpenJDK or Oracle's JRE depending on your platform.
 
 ## Requirements
+
 ### Platforms
+
 - Debian/Ubuntu
 - RHEL/CentOS/Scientific/Amazon/Oracle
 - Fedora
 - Windows
 
 ### Chef
+
 - Chef 11+
 
 ### Cookbooks
+
 - java - java_ark custom resource used by the Maven LWRP
 - ark - used to unpack the maven tarball
-- windows - used on windows platform
 
 ## Attributes
+
 - `node['maven']['version']` - specifies the version of maven to install.
-- `node['maven']['m2_home']` - defaults to  '/usr/local/maven/'
+- `node['maven']['m2_home']` - defaults to '/usr/local/maven/'
 - `node['maven']['url']` - the download url for maven
-- `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256 <file>
+- `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256
+
+  <file>
+  </file>
+
 - `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
+
 - `node['maven']['setup_bin']` - whether or not to put mvn on your system path, defaults to false
+
 - `node['maven']['mavenrc']['opts']` - value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
 
 ## Recipes
+
 ### default
+
 Installs maven according to the version specified by the `node['maven']['version']` attribute.
 
 ### settings
+
 Installs gems required to parse settings.xml to ruby and hash and back to xml
 
 ## Usage
+
 Install a working Java 8 JRE (Oracle or OpenJDK) either using the Java cookbook or your own cookbooks
 
 Include the recipe where you want Apache Maven installed.
@@ -48,7 +63,9 @@ The maven lwrp has two actions, `:install` and `:put`. They are essentially the 
 Use the put action when you want to explicitly control the name of the downloaded file. This is useful when you download an artifact and then want to have Chef resources act on files within that the artifact. The put action will creat a file named `name.packaging` where name corresponds to the name attribute.
 
 ## Providers/Resources
-## maven\_settings
+
+## maven_settings
+
 Resource provider for modifying the maven settings.
 
 ### Actions
@@ -79,13 +96,14 @@ end
 ```
 
 ### maven
+
 - `artifact_id` - if this is not specified, the resource's name is used
 - `group_id` - group_id for the artifact
 - `version` - version of the artifact
 - `dest` - the destination folder for the jar and its dependencies
 - `packaging` - defaults to 'jar'
 - `classifier` - distinguishes artifacts that were built from the same POM but differ in context
-- `repositories` - array of maven repositories to use, defaults to ["[http://repo1.maven.apache.org/maven2](http://repo1.maven.apache.org/maven2)"]
+- `repositories` - array of maven repositories to use, defaults to ["<http://repo1.maven.apache.org/maven2>"]
 - `owner` - the owner of the resulting file, default is root
 - `group` - the group of the resulting file, default is root's group
 - `mode` - integer value for file permissions, default is 0644
@@ -122,6 +140,7 @@ end
 ```
 
 ## License & Authors
+
 **Author:** Seth Chisamore ([schisamo@chef.io](mailto:schisamo@chef.io))
 
 **Author:** Bryan W. Berry ([bryan.berry@gmail.com](mailto:bryan.berry@gmail.com))
