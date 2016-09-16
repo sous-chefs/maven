@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 4.0.0 (2016-09-16)
+- Force update when downloading snapshots
+- Require Chef 12.1+
+- Testing updates
+
 ## 3.0.0 (2016-09-03)
 - Resolve rubocop warnings
 - Add use_inline_resources to the providers
