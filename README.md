@@ -19,7 +19,7 @@ Note: This cookbook does not handle the installation of Java, but Maven requires
 
 ### Chef
 
-- Chef 12+
+- Chef 12.1+
 
 ### Cookbooks
 

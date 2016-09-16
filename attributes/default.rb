@@ -5,7 +5,7 @@
 # Author:: Seth Chisamore (<schisamo@chef.io>)
 # Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 #
-# Copyright:: Copyright (c) 2010-2015, Chef Software, Inc.
+# Copyright:: Copyright (c) 2010-2016, Chef Software, Inc.
 # License:: Apache License, Version 2.0
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
