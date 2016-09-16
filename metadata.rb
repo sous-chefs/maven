@@ -20,5 +20,4 @@ supports 'windows'
 
 source_url 'https://github.com/chef-cookbooks/maven'
 issues_url 'https://github.com/chef-cookbooks/maven/issues'
-
 chef_version '>= 12.1'

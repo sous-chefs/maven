@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe 'default recipe' do
   let(:chef_run) do
-    ChefSpec::ServerRunner.new do |node|
-    end.converge('maven::default')
+    runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+    runner.converge('maven::default')
   end
 
   it 'includes the ark recipe' do

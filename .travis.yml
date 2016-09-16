@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 
-# install the pre-release chef-dk.  Use chef-stable-precise to install the stable release
+# install the pre-release chef-dk.  Use chef-stable-trusty to install the stable release
 addons:
   apt:
     sources:
@@ -22,6 +22,7 @@ env:
   matrix:
   - INSTANCE=resource-ubuntu-1204
   - INSTANCE=resource-ubuntu-1404
+  - INSTANCE=resource-ubuntu-1604
   - INSTANCE=resource-centos-6
   - INSTANCE=resource-centos-7
 
