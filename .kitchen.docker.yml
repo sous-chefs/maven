@@ -97,5 +97,4 @@ platforms:
 
 suites:
   - name: resource
-    run_list:
-      - recipe[test::default]
+    run_list: test::default
