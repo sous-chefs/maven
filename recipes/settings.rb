@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: maven
+# Cookbook:: maven
 # Recipe:: default
 #
 # Author:: Pushkar Raste (<pushkar.raste@gmail.com>)

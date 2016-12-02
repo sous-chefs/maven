@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: maven
+# Cookbook:: maven
 # Library:: default
 #
 # Author:: Seth Chisamore (<schisamo@chef.io>)
