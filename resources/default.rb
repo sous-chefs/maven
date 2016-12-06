@@ -21,7 +21,7 @@
 actions :install, :put
 default_action :install
 
-attribute :artifact_id,  kind_of: String
+attribute :artifact_id,  kind_of: String, name_property: true
 attribute :group_id,     kind_of: String, required: true
 attribute :dest,         kind_of: String
 attribute :version,      kind_of: String, required: true
@@ -40,6 +40,5 @@ alias_method :groupId, :group_id
 def initialize(*args)
   super
   # we can't use the node properties when initially specifying the resource
-  @artifact_id ||= @name
   @repositories ||= node['maven']['repositories']
 end
