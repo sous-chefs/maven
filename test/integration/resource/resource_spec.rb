@@ -29,5 +29,5 @@ describe file('/usr/local/notifyOne') do
 end
 
 describe file('/usr/local/notifyTwo') do
-  it { should be_a_file }
+  it { should_not be_a_file }
 end
