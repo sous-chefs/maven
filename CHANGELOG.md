@@ -2,12 +2,21 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 4.0.1 (2016-12-06)
+
+- Change provider so it only notifies when the artifact actaully changes
+- Add a matcher for the settings resource
+- Set the name property using the DSL
+- Properly set the repositories from attribute in the provider
+
 ## 4.0.0 (2016-09-16)
+
 - Force update when downloading snapshots
 - Require Chef 12.1+
 - Testing updates
 
 ## 3.0.0 (2016-09-03)
+
 - Resolve rubocop warnings
 - Add use_inline_resources to the providers
 - Testing updates
