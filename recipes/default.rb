@@ -29,7 +29,7 @@ ark 'maven' do
   checksum node['maven']['checksum']
   home_dir node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
-  append_env_path true
+  append_env_path node['maven']['setup_bin']
 end
 
 # setup environmental variables
