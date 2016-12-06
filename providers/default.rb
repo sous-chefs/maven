@@ -32,15 +32,13 @@ def whyrun_supported?
 end
 
 def get_artifact_file_name(action, new_resource)
-  if action == 'put'
-    artifact_file_name = "#{new_resource.name}.#{new_resource.packaging}"
-  else
-    artifact_file_name = if new_resource.classifier.nil?
-                           "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
-                         else
-                           "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
-                         end
-  end
+  artifact_file_name = if action == 'put'
+                         "#{new_resource.name}.#{new_resource.packaging}"
+                       elsif new_resource.classifier.nil?
+                         "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+                       else
+                         "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+                       end
   artifact_file_name
 end
 
@@ -56,7 +54,7 @@ def create_command_string(artifact_file, new_resource)
   plugin_version = '2.4'
   plugin = "org.apache.maven.plugins:maven-dependency-plugin:#{plugin_version}:get"
   transitive = '-Dtransitive=' + new_resource.transitive.to_s
-  %Q{mvn #{force_update} #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos} #{transitive}}
+  %(mvn #{force_update} #{plugin} #{group_id} #{artifact_id} #{version} #{packaging} #{classifier} #{dest} #{repos} #{transitive})
 end
 
 def get_mvn_artifact(action, new_resource)
@@ -67,14 +65,14 @@ def get_mvn_artifact(action, new_resource)
     shell_out!(create_command_string(tmp_file, new_resource), timeout: new_resource.timeout)
     dest_file = ::File.join(new_resource.dest, artifact_file_name)
 
-    unless ::File.exists?(dest_file) && checksum(tmp_file) == checksum(dest_file)
+    unless ::File.exist?(dest_file) && checksum(tmp_file) == checksum(dest_file)
       converge_by "#{action.capitalize} #{new_resource}" do
         directory new_resource.dest do
           recursive true
           mode '0755'
         end.run_action(:create)
 
-        FileUtils.cp(tmp_file, dest_file, :preserve => true)
+        FileUtils.cp(tmp_file, dest_file, preserve: true)
 
         file dest_file do
           owner new_resource.owner
