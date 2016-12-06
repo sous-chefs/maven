@@ -31,14 +31,8 @@ attribute :owner,        kind_of: String, default: 'root'
 attribute :group,        kind_of: String, default: node['root_group']
 attribute :timeout,      kind_of: Integer, default: 600
 attribute :mode,         kind_of: [Integer, String], default: '0644'
-attribute :repositories, kind_of: Array
+attribute :repositories, kind_of: Array, default: lazy { node['maven']['repositories'] }
 attribute :transitive,   kind_of: [TrueClass, FalseClass], default: false
 
 alias_method :artifactId, :artifact_id
 alias_method :groupId, :group_id
-
-def initialize(*args)
-  super
-  # we can't use the node properties when initially specifying the resource
-  @repositories ||= node['maven']['repositories']
-end
