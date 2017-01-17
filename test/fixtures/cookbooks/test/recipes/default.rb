@@ -58,7 +58,7 @@ maven 'postgresql' do
   dest     '/usr/local/foobar/lib'
   repositories [
     'http://mirrors.ibiblio.org/pub/mirrors/maven2/',
-    'http://repo1.maven.apache.org/maven2'
+    'http://repo1.maven.apache.org/maven2',
   ]
 end
 
