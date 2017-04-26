@@ -2,6 +2,15 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.0.0 (2017-04-26)
+
+- Add new setup_bin attribute to allow you to skip adding mvn to the system's path
+- Test with delivery local mode
+- Convert default LWRP to a custom resource
+- Fix readme formatting
+- Use Maven 3.5.0 by default
+- Fix Chef 13 compat + why-run support in settings LWRP
+
 ## 4.0.1 (2016-12-06)
 
 - Change provider so it only notifies when the artifact actaully changes
