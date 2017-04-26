@@ -19,7 +19,7 @@ Note: This cookbook does not handle the installation of Java, but Maven requires
 
 ### Chef
 
-- Chef 12.1+
+- Chef 12.5+
 
 ### Cookbooks
 
@@ -31,15 +31,9 @@ Note: This cookbook does not handle the installation of Java, but Maven requires
 - `node['maven']['version']` - specifies the version of maven to install.
 - `node['maven']['m2_home']` - defaults to '/usr/local/maven/'
 - `node['maven']['url']` - the download url for maven
-- `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using shasum -a 256
-
-  <file>
-  </file>
-
+- `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using `shasum -a 256 FILENAME`
 - `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
-
 - `node['maven']['setup_bin']` - whether or not to put mvn on your system path, defaults to false
-
 - `node['maven']['mavenrc']['opts']` - value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
 
 ## Recipes
