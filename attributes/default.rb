@@ -28,4 +28,4 @@ default['maven']['url'] = "http://apache.mirrors.tds.net/maven/maven-#{node['mav
 default['maven']['checksum'] = 'beb91419245395bd69a4a6edad5ca3ec1a8b64e41457672dc687c173a495f034'
 default['maven']['plugin_version'] = '2.10'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven']
-default['maven']['setup_bin'] = false
+default['maven']['setup_bin'] = true
