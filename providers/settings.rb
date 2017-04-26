@@ -21,8 +21,12 @@
 
 use_inline_resources
 
+def whyrun_supported?
+  true
+end
+
 def load_current_resource
-  @current_resource = Chef::Resource::MavenSettings.new(new_resource.path)
+  @current_resource = new_resource.class.new(new_resource.name)
   @current_resource.value new_resource.value
 
   @current_resource
@@ -30,8 +34,9 @@ end
 
 action :update do
   unless path_value_equals?(@current_resource.value)
-    update_maven_settings
-    new_resource.updated_by_last_action(true)
+    converge_by('update maven settings') do
+      update_maven_settings
+    end
   end
 end
 
