@@ -1,4 +1,4 @@
-apt_update 'update' if platform_family?('debian')
+apt_update
 
 include_recipe 'java::default'
 include_recipe 'maven::default'
