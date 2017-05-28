@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.0.1 (2017-05-28)
+
+- Close settings.xml file after writing.
+
 ## 5.0.0 (2017-04-26)
 
 - Add new setup_bin attribute to allow you to skip adding mvn to the system's path

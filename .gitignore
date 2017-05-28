@@ -49,3 +49,4 @@ Cheffile.lock
 .vagrant/
 .vagrant.d/
 .kitchen/
+maven.iml
