@@ -71,5 +71,4 @@ def update_maven_settings
   file = ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'w+')
   file.write(xmlized_updated_settings)
   file.close()
-
 end
