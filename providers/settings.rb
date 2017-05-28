@@ -41,20 +41,25 @@ action :update do
 end
 
 private
-require 'nori'
 
 def path_value_equals?(value)
-  hashed_settings = Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
+  hashed_settings = maven_settings_hash
   Chef::Log.warn("Hash: #{hashed_settings} ")
 
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] == value
 end
 
+def maven_settings_hash
+  require 'nori'
+  Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
+end
+
 def update_maven_settings
   require 'gyoku'
 
-  hashed_settings = Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
+  hashed_settings = maven_settings_hash
+
 
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] = new_resource.value
@@ -65,5 +70,6 @@ def update_maven_settings
   # Empty tags end up with attribute xsi:nil="true", let's clean that up
   xmlized_updated_settings.gsub!(/xsi:nil="true"/, '')
 
-  ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'w+').write(xmlized_updated_settings)
+  ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'w+').write(xmlized_updated_settings).close()
+
 end
