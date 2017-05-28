@@ -44,6 +44,7 @@ private
 
 def path_value_equals?(value)
   hashed_settings = maven_settings_hash
+  Chef::Log.warn("Hash: #{hashed_settings} ")
 
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] == value
@@ -58,7 +59,6 @@ def update_maven_settings
   require 'gyoku'
 
   hashed_settings = maven_settings_hash
-  Chef::Log.warn("Hash: #{hashed_settings} ")
 
 
   *path_elements, setting_to_update = new_resource.path.split('.')
