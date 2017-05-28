@@ -41,25 +41,20 @@ action :update do
 end
 
 private
+require 'nori'
 
 def path_value_equals?(value)
-  hashed_settings = maven_settings_hash
+  hashed_settings = Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
   Chef::Log.warn("Hash: #{hashed_settings} ")
 
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] == value
 end
 
-def maven_settings_hash
-  require 'nori'
-  Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
-end
-
 def update_maven_settings
   require 'gyoku'
 
-  hashed_settings = maven_settings_hash
-
+  hashed_settings = Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
 
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] = new_resource.value
