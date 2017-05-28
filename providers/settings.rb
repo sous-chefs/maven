@@ -59,7 +59,6 @@ def update_maven_settings
 
   hashed_settings = maven_settings_hash
 
-
   *path_elements, setting_to_update = new_resource.path.split('.')
   path_elements.inject(hashed_settings, :fetch)[setting_to_update] = new_resource.value
 
