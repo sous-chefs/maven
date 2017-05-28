@@ -5,6 +5,7 @@ This file is used to list changes made in each version of the maven cookbook.
 ## 5.0.1 (2017-05-28)
 
 - Close settings.xml file after writing.
+- Increase requirement to 12.6+ as we can't use action_class.class_eval at this point
 
 ## 5.0.0 (2017-04-26)
 
