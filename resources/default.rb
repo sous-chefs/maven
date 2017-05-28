@@ -47,7 +47,7 @@ action :put do
   get_mvn_artifact('put', new_resource)
 end
 
-action_class.class_eval do
+action_class do
   def get_artifact_file_name(action, new_resource)
     artifact_file_name = if action == 'put'
                            "#{new_resource.name}.#{new_resource.packaging}"
