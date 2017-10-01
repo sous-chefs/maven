@@ -27,9 +27,8 @@ describe 'default recipe' do
   end
 
   it 'writes the `/etc/mavenrc`' do
-    template = chef_run.template('/etc/mavenrc')
-    expect(template).to be
-    expect(template.source).to eq('mavenrc.erb')
-    expect(template.mode).to eq('0755')
+    expect(chef_run).to create_template('/etc/mavenrc')
+      .with(source: 'mavenrc.erb')
+      .with(mode: '0755')
   end
 end
