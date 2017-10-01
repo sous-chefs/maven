@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'default recipe' do
+describe 'maven::default' do
   context 'When the platform doesn\'t matter' do
     cached(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
@@ -10,7 +10,7 @@ describe 'default recipe' do
         node.automatic['maven']['m2_home'] = '/home/maven-user'
         node.automatic['maven']['setup_bin'] = false
       end
-      runner.converge('maven::default')
+      runner.converge(described_recipe)
     end
 
     it 'includes the ark recipe' do
@@ -31,7 +31,7 @@ describe 'default recipe' do
   context 'On a non-Windows platform' do
     cached(:chef_run) do
       runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
-      runner.converge('maven::default')
+      runner.converge(described_recipe)
     end
 
     it 'writes the `/etc/mavenrc`' do
@@ -47,7 +47,7 @@ describe 'default recipe' do
         node.automatic['maven']['m2_home'] = 'C:\Users\Maven-User'
         node.automatic['maven']['mavenrc']['opts'] = '-Ddummy=true'
       end
-      runner.converge('maven::default')
+      runner.converge(described_recipe)
     end
 
     it 'sets the M2_HOME environment variable' do
