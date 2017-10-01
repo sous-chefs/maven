@@ -2,29 +2,87 @@ require 'spec_helper'
 
 describe 'maven::default' do
   context 'When the platform doesn\'t matter' do
-    cached(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
-        node.automatic['maven']['version'] = '1.2.3'
-        node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
-        node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
-        node.automatic['maven']['m2_home'] = '/home/maven-user'
-        node.automatic['maven']['setup_bin'] = false
+    context 'When Maven owner and group are not important' do
+      cached(:chef_run) do
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+        runner.converge(described_recipe)
       end
-      runner.converge(described_recipe)
+
+      it 'includes the ark recipe' do
+        expect(chef_run).to include_recipe('ark::default')
+      end
     end
 
-    it 'includes the ark recipe' do
-      expect(chef_run).to include_recipe('ark::default')
+    context 'When Maven owner and group are not overriden' do
+      cached(:chef_run) do
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
+          node.automatic['maven']['version'] = '1.2.3'
+          node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
+          node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
+          node.automatic['maven']['m2_home'] = '/home/maven-user'
+          node.automatic['maven']['setup_bin'] = false
+        end
+        runner.converge(described_recipe)
+      end
+
+      it 'does not create a group' do
+        expect(chef_run).to_not create_group('create the group for Maven')
+      end
+
+      it 'does not create a user' do
+        expect(chef_run).to_not create_user('create the user for Maven')
+      end
+
+      it 'downloads ark' do
+        expect(chef_run).to install_ark('maven')
+          .with(version: '1.2.3')
+          .with(url: 'https://maven/maven.tar.gz')
+          .with(checksum: '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef')
+          .with(home_dir: '/home/maven-user')
+          .with(win_install_dir: '/home/maven-user')
+          .with(append_env_path: false)
+          .with(owner: 'root')
+          .with(group: 'root')
+      end
     end
 
-    it 'downloads ark' do
-      expect(chef_run).to install_ark('maven')
-        .with(version: '1.2.3')
-        .with(url: 'https://maven/maven.tar.gz')
-        .with(checksum: '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef')
-        .with(home_dir: '/home/maven-user')
-        .with(win_install_dir: '/home/maven-user')
-        .with(append_env_path: false)
+    context 'When Maven owner and group are overriden' do
+      cached(:chef_run) do
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
+          node.automatic['maven']['version'] = '1.2.3'
+          node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
+          node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
+          node.automatic['maven']['m2_home'] = '/home/maven-user'
+          node.automatic['maven']['setup_bin'] = false
+          node.automatic['maven']['user'] = 'maven-user'
+          node.automatic['maven']['group'] = 'maven-group'
+        end
+        runner.converge(described_recipe)
+      end
+
+      it 'creates a group' do
+        expect(chef_run).to create_group('create the group for Maven')
+          .with(group_name: 'maven-group')
+      end
+
+      it 'creates a user' do
+        expect(chef_run).to create_user('create the user for Maven')
+          .with(username: 'maven-user')
+          .with(manage_home: true)
+          .with(group: 'maven-group')
+      end
+
+      it 'downloads ark' do
+        expect(chef_run).to install_ark('maven')
+          .with(version: '1.2.3')
+          .with(url: 'https://maven/maven.tar.gz')
+          .with(checksum: '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef')
+          .with(home_dir: '/home/maven-user')
+          .with(win_install_dir: '/home/maven-user')
+          .with(append_env_path: false)
+          .with(owner: 'maven-user')
+          .with(group: 'maven-group')
+      end
     end
   end
 

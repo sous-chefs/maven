@@ -22,6 +22,18 @@
 
 include_recipe 'ark::default'
 
+group 'create the group for Maven' do
+  group_name node['maven']['group']
+  not_if { node['maven']['group'] == 'root' }
+end
+
+user 'create the user for Maven' do
+  username node['maven']['user']
+  group node['maven']['group']
+  manage_home true
+  not_if { node['maven']['group'] == 'root' }
+end
+
 # install maven via ark
 ark 'maven' do
   version node['maven']['version']
@@ -30,6 +42,8 @@ ark 'maven' do
   home_dir node['maven']['m2_home']
   win_install_dir node['maven']['m2_home']
   append_env_path node['maven']['setup_bin']
+  owner node['maven']['user']
+  group node['maven']['group']
 end
 
 # setup environmental variables
