@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.0.3 (2017-11-01)
+
+- Fix the archive URL for realz this time
+
 ## 5.0.2 (2017-11-01)
 
 - Update the default maven URL to use the apache.org archive site since the binary has been moved off the main site
