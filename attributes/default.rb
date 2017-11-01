@@ -24,7 +24,7 @@
 default['maven']['m2_home'] = '/usr/local/maven'
 default['maven']['mavenrc']['opts'] = '-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m'
 default['maven']['version'] = '3.5.0'
-default['maven']['url'] = "http://archive.apache.org/maven/maven-#{node['maven']['version'].split('.')[0]}/#{node['maven']['version']}/binaries/apache-maven-#{node['maven']['version']}-bin.tar.gz"
+default['maven']['url'] = "http://archive.apache.org/dist/maven/maven-#{node['maven']['version'].split('.')[0]}/#{node['maven']['version']}/binaries/apache-maven-#{node['maven']['version']}-bin.tar.gz"
 default['maven']['checksum'] = 'beb91419245395bd69a4a6edad5ca3ec1a8b64e41457672dc687c173a495f034'
 default['maven']['plugin_version'] = '2.10'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven']
