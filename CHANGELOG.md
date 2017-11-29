@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.1.0 (2017-11-28)
+
+- Update version of maven installed
+- Remove java dependency (add to test cookbook)
+
 ## 5.0.3 (2017-11-01)
 
 - Fix the archive URL for realz this time
