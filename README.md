@@ -4,9 +4,9 @@
 
 Install and configure Apache Maven from the binaries provided by the Maven project.
 
-Provides the `maven` LWRP for pulling a maven artifact from a mave repository and placing it in an arbitrary location.
+Provides the `maven` LWRP for pulling a maven artifact from a maven repository and placing it in an arbitrary location.
 
-Note: This cookbook does not handle the installation of Java, but Maven requires a working JDK 8 release. You'll need to use the Java cookbook to install OpenJDK or Oracle's JRE depending on your platform.
+Note: This cookbook does not handle the installation of Java but does require it to be installed. This can be done either using the [Java cookbook](https://supermarket.chef.io/cookbooks/java) or your own cookbook. Check the [Maven website](https://maven.apache.org/docs/history.html) for more information about explicit Java requirements.
 
 ## Requirements
 
@@ -48,7 +48,7 @@ Installs gems required to parse settings.xml to ruby and hash and back to xml
 
 ## Usage
 
-Install a working Java 8 JRE (Oracle or OpenJDK) either using the Java cookbook or your own cookbooks
+Install a version of Java JRE (Oracle or OpenJDK) that is at minimum the version of Java required by the [maven release you are installing](https://maven.apache.org/docs/history.html). This can be done either using the [Java cookbook](https://supermarket.chef.io/cookbooks/java) or your own cookbook.
 
 Include the recipe where you want Apache Maven installed.
 
@@ -141,7 +141,7 @@ end
 
 **Author:** Leif Madsen ([lmadsen@thinkingphones.com](mailto:lmadsen@thinkingphones.com))
 
-**Copyright:** 2008-2016, Chef Software, Inc.
+**Copyright:** 2008-2017, Chef Software, Inc.
 
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
