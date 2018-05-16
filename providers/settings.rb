@@ -19,7 +19,7 @@
 
 # This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
 
-use_inline_resources
+use_inline_resources # ~FC113
 
 def whyrun_supported?
   true
