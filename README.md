@@ -35,6 +35,8 @@ Note: This cookbook does not handle the installation of Java but does require it
 - `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
 - `node['maven']['setup_bin']` - whether or not to put mvn on your system path, defaults to false
 - `node['maven']['mavenrc']['opts']` - value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
+- `node['maven']['user']` - User to own Maven install, defaults to `root`.
+- `node['maven']['group']` - Group to own Maven install, defaults to `root`.
 
 ## Recipes
 
