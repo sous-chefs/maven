@@ -2,6 +2,12 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.2.0 (2018-07-23)
+
+- Remove ChefSpec matchers that are auto generated now
+- Verify install_ark resource is correctly called
+- Add ability to install Maven under different user/group and auto create that user/group
+
 ## 5.1.0 (2017-11-28)
 
 - Update version of maven installed
