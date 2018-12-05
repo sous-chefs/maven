@@ -24,7 +24,7 @@ include_recipe 'ark::default'
 
 group 'create the group for Maven' do
   group_name node['maven']['group']
-  not_if { node['maven']['group'] == 'root' || node['maven']['group'] == 'Administrators' }
+  not_if { node['maven']['group'] == 'root' || node['maven']['group'] == 'admin' || node['maven']['group'] == 'Administrators' }
 end
 
 user 'create the user for Maven' do
