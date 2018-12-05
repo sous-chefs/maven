@@ -38,6 +38,8 @@ end
 default['maven']['group'] = case node['platform_family']
 when 'windows'
   'Administrators'
+when 'mac_os_x'
+  'admin'
 else
   'root'
 end
