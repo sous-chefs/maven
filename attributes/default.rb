@@ -30,14 +30,14 @@ default['maven']['plugin_version'] = '2.10'
 default['maven']['repositories'] = ['http://repo1.maven.apache.org/maven']
 default['maven']['setup_bin'] = true
 default['maven']['user'] = case node['platform_family']
-when 'windows'
-  'Administrator'
-else
-  'root'
+                           when 'windows'
+                             'Administrator'
+                           else
+                             'root'
 end
 default['maven']['group'] = case node['platform_family']
-when 'windows'
-  'Administrators'
-else
-  'root'
+                            when 'windows'
+                              'Administrators'
+                            else
+                              'root'
 end
