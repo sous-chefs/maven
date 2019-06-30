@@ -34,10 +34,10 @@ default['maven']['user'] = case node['platform_family']
                              'Administrator'
                            else
                              'root'
-end
+                           end
 default['maven']['group'] = case node['platform_family']
                             when 'windows'
                               'Administrators'
                             else
                               'root'
-end
+                            end
