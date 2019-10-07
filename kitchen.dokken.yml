@@ -14,7 +14,7 @@ verifier:
   name: inspec
 
 platforms:
-- name: debian-8
+- name: debian-9
   driver:
     image: debian:8
     pid_one_command: /bin/systemd

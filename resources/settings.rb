@@ -3,7 +3,7 @@
 # Resource:: default
 #
 # Author:: Pushkar Raste <praste@bloomberg.net, pushkar.raste@gmail.com>
-# Copyright:: 2014-2016, Bloomberg Inc.
+# Copyright:: 2014-2019, Bloomberg Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
 
 # This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
 
-actions :update
 default_action :update
 
 attribute :path, kind_of: String, name_attribute: true

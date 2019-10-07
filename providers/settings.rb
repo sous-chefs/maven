@@ -3,7 +3,7 @@
 # Provider:: settings
 #
 # Author:: Pushkar Raste <praste@bloomberg.net, pushkar.raste@gmail.com>
-# Copyright:: 2014-2016, Bloomberg Inc.
+# Copyright:: 2014-2019, Bloomberg Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,12 +18,6 @@
 # limitations under the License.
 
 # This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
-
-use_inline_resources # ~FC113
-
-def whyrun_supported?
-  true
-end
 
 def load_current_resource
   @current_resource = new_resource.class.new(new_resource.name)

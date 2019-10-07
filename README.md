@@ -4,7 +4,7 @@
 
 Install and configure Apache Maven from the binaries provided by the Maven project.
 
-Provides the `maven` LWRP for pulling a maven artifact from a maven repository and placing it in an arbitrary location.
+Provides the `maven` resource for pulling a maven artifact from a maven repository and placing it in an arbitrary location.
 
 Note: This cookbook does not handle the installation of Java but does require it to be installed. This can be done either using the [Java cookbook](https://supermarket.chef.io/cookbooks/java) or your own cookbook. Check the [Maven website](https://maven.apache.org/docs/history.html) for more information about explicit Java requirements.
 
@@ -19,11 +19,10 @@ Note: This cookbook does not handle the installation of Java but does require it
 
 ### Chef
 
-- Chef 12.5+
+- Chef 13+
 
 ### Cookbooks
 
-- java - java_ark custom resource used by the Maven LWRP
 - ark - used to unpack the maven tarball
 
 ## Attributes

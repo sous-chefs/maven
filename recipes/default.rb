@@ -5,7 +5,7 @@
 # Author:: Seth Chisamore (<schisamo@chef.io>)
 # Author:: Bryan W. Berry (<bryan.berry@gmail.com>)
 #
-# Copyright:: 2010-2016, Chef Software, Inc.
+# Copyright:: 2010-2019, Chef Software, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -47,7 +47,7 @@ ark 'maven' do
 end
 
 # setup environmental variables
-if node['platform_family'] == 'windows'
+if platform_family?('windows')
   env 'M2_HOME' do
     value node['maven']['m2_home']
     action :create
