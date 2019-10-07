@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## 5.3.0 (2019-10-07)
+
+- Cookstyle fixes - [@tas50](https://github.com/tas50)
+- Update for Chef 15 license agreement and Chef Workstation - [@tas50](https://github.com/tas50)
+- Style fixes - [@tas50](https://github.com/tas50)
+- Resolve Cookstyle 5.8 warnings and require Chef 13+ - [@tas50](https://github.com/tas50)
+
 ## 5.2.0 (2018-07-23)
 
 - Remove ChefSpec matchers that are auto generated now

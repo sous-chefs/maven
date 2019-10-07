@@ -3,7 +3,7 @@ maintainer       'Chef Software, Inc.'
 maintainer_email 'cookbooks@chef.io'
 license          'Apache-2.0'
 description      'Installs Apache Maven includes a resource for installing artifacts from maven'
-version          '5.2.0'
+version          '5.3.0'
 
 depends 'ark',  '>= 1.0'
 
