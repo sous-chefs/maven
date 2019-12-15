@@ -29,7 +29,7 @@ property :group,        String, default: node['root_group']
 property :timeout,      Integer, default: 600
 property :mode,         [Integer, String], default: '0644'
 property :repositories, Array, default: lazy { node['maven']['repositories'] }
-property :transitive,   [true, false], default: false
+property :transitive,   [TrueClass, FalseClass], default: false
 
 alias_method :artifactId, :artifact_id
 alias_method :groupId, :group_id
