@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'maven::default' do
-  context 'When the platform doesn\'t matter' do
+  context "When the platform doesn't matter" do
     cached(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+      runner = ChefSpec::ServerRunner.new(platform: 'ubuntu')
       runner.converge(described_recipe)
     end
 
@@ -15,7 +15,7 @@ describe 'maven::default' do
   context 'On a non-Windows platform' do
     context 'When Maven owner and group are not important' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04')
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu')
         runner.converge(described_recipe)
       end
 
@@ -28,7 +28,7 @@ describe 'maven::default' do
 
     context 'When Maven owner and group are not overriden' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu') do |node|
           node.automatic['maven']['version'] = '1.2.3'
           node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
           node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
@@ -61,7 +61,7 @@ describe 'maven::default' do
 
     context 'When Maven owner and group are overriden' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '16.04') do |node|
+        runner = ChefSpec::ServerRunner.new(platform: 'ubuntu') do |node|
           node.automatic['maven']['version'] = '1.2.3'
           node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
           node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
@@ -102,7 +102,7 @@ describe 'maven::default' do
   context 'On a Windows platform' do
     context 'When Maven owner and group are not important' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '7') do |node|
+        runner = ChefSpec::ServerRunner.new(platform: 'windows') do |node|
           node.automatic['maven']['m2_home'] = 'C:\Users\Maven-User'
           node.automatic['maven']['mavenrc']['opts'] = '-Ddummy=true'
         end
@@ -122,7 +122,7 @@ describe 'maven::default' do
 
     context 'When Maven owner and group are not overriden' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '7') do |node|
+        runner = ChefSpec::ServerRunner.new(platform: 'windows') do |node|
           node.automatic['maven']['version'] = '1.2.3'
           node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
           node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
@@ -155,7 +155,7 @@ describe 'maven::default' do
 
     context 'When Maven owner and group are overriden' do
       cached(:chef_run) do
-        runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '7') do |node|
+        runner = ChefSpec::ServerRunner.new(platform: 'windows') do |node|
           node.automatic['maven']['version'] = '1.2.3'
           node.automatic['maven']['url'] = 'https://maven/maven.tar.gz'
           node.automatic['maven']['checksum'] = '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef'
