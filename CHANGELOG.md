@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+## Unreleased
+
+- resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
+
 ## 5.3.0 (2019-10-07)
 
 - Cookstyle fixes - [@tas50](https://github.com/tas50)

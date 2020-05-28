@@ -25,7 +25,7 @@ property :version,      String, required: true
 property :packaging,    String, default: 'jar'
 property :classifier,   String
 property :owner,        String, default: 'root'
-property :group,        String, default: node['root_group']
+property :group,        String, default: lazy { node['root_group'] }
 property :timeout,      Integer, default: 600
 property :mode,         [Integer, String], default: '0644'
 property :repositories, Array, default: lazy { node['maven']['repositories'] }
