@@ -49,14 +49,13 @@ end
 
 action_class do
   def get_artifact_file_name(action, new_resource)
-    artifact_file_name = if action == 'put'
-                           "#{new_resource.name}.#{new_resource.packaging}"
-                         elsif new_resource.classifier.nil?
-                           "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
-                         else
-                           "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
-                         end
-    artifact_file_name
+    if action == 'put'
+      "#{new_resource.name}.#{new_resource.packaging}"
+    elsif new_resource.classifier.nil?
+      "#{new_resource.artifact_id}-#{new_resource.version}.#{new_resource.packaging}"
+    else
+      "#{new_resource.artifact_id}-#{new_resource.version}-#{new_resource.classifier}.#{new_resource.packaging}"
+    end
   end
 
   def create_command_string(artifact_file, new_resource)

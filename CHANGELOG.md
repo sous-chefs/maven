@@ -4,6 +4,15 @@ This file is used to list changes made in each version of the maven cookbook.
 
 ## Unreleased
 
+- resolved cookstyle error: resources/default.rb:52:5 convention: `Style/RedundantAssignment`
+- resolved cookstyle error: resources/default.rb:53:5 convention: `Layout/IndentationWidth`
+- resolved cookstyle error: resources/default.rb:54:26 convention: `Layout/ElseAlignment`
+- resolved cookstyle error: resources/default.rb:55:5 convention: `Layout/IndentationWidth`
+- resolved cookstyle error: resources/default.rb:56:26 convention: `Layout/ElseAlignment`
+- resolved cookstyle error: resources/default.rb:57:5 convention: `Layout/IndentationWidth`
+- resolved cookstyle error: resources/default.rb:58:26 warning: `Layout/EndAlignment`
+- resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/EmptyLinesAroundMethodBody`
+- resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/TrailingWhitespace`
 - resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
 
 ## 5.3.0 (2019-10-07)
