@@ -2,7 +2,17 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## Unreleased
+
+### Changed
+
+- Sous Chefs Adoption
+- Update to use Sous Chefs GH workflow
+
+### Fixed
 
 - resolved cookstyle error: resources/default.rb:52:5 convention: `Style/RedundantAssignment`
 - resolved cookstyle error: resources/default.rb:53:5 convention: `Layout/IndentationWidth`
