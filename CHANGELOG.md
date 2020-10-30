@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/EmptyLinesAroundMethodBody`
 - resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/TrailingWhitespace`
 - resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
+- Yamllint fixes
 
 ## 5.3.0 (2019-10-07)
 
