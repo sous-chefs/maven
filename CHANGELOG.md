@@ -30,6 +30,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Add default .mdlrc
 
+### Removed
+
+- Remove EL 6 testing
+
 ## 5.3.0 (2019-10-07)
 
 - Cookstyle fixes - [@tas50](https://github.com/tas50)
