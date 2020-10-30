@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
 - Yamllint fixes
 
+### Added
+
+- Add default .mdlrc
+
 ## 5.3.0 (2019-10-07)
 
 - Cookstyle fixes - [@tas50](https://github.com/tas50)
