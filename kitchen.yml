@@ -8,6 +8,7 @@ provisioner:
   multiple_converge: 2
   deprecations_as_errors: true
 
+
 verifier:
   name: inspec
 
@@ -24,3 +25,6 @@ platforms:
 suites:
   - name: resource
     run_list: test::default
+    provisioner:
+      enforce_idempotency: false
+      multiple_converge: 1
