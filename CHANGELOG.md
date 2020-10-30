@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add default .mdlrc
+- Add missing platforms to dokken
 
 ### Removed
 
