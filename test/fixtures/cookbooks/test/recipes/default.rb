@@ -4,6 +4,8 @@ adoptopenjdk_install '14'
 
 include_recipe 'maven::default'
 
+group 'foobarbaz' if platform_family?('suse')
+
 user 'foobarbaz'
 
 %w(/usr/local/notifyOne /usr/local/notifyTwo /usr/local/foobar/lib/mysql-connector-java-5.1.19.jar).each do |fname|
