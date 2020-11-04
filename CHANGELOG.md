@@ -2,7 +2,20 @@
 
 This file is used to list changes made in each version of the maven cookbook.
 
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## Unreleased
+
+### Changed
+
+- Sous Chefs Adoption
+- Update to use Sous Chefs GH workflow
+- Update README to sous-chefs
+- Update metadata.rb to Sous Chefs
+- Update test-kitchen to Sous Chefs
+
+### Fixed
 
 - resolved cookstyle error: resources/default.rb:52:5 convention: `Style/RedundantAssignment`
 - resolved cookstyle error: resources/default.rb:53:5 convention: `Layout/IndentationWidth`
@@ -14,6 +27,16 @@ This file is used to list changes made in each version of the maven cookbook.
 - resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/EmptyLinesAroundMethodBody`
 - resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/TrailingWhitespace`
 - resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
+- Yamllint fixes
+
+### Added
+
+- Add default .mdlrc
+- Add missing platforms to dokken
+
+### Removed
+
+- Remove EL 6 testing
 
 ## 5.3.0 (2019-10-07)
 

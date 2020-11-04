@@ -1,7 +1,10 @@
 apt_update
 
-include_recipe 'java::default'
+adoptopenjdk_install '14'
+
 include_recipe 'maven::default'
+
+group 'foobarbaz' if platform_family?('suse')
 
 user 'foobarbaz'
 
