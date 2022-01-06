@@ -45,7 +45,7 @@ end
 
 def maven_settings_hash
   require 'nori'
-  Nori.new(parser: :rexml).parse(::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'r').read)
+  Nori.new(parser: :rexml).parse(::File.read("#{node['maven']['m2_home']}/conf/settings.xml"))
 end
 
 def update_maven_settings
