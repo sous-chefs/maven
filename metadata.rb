@@ -6,7 +6,7 @@ description       'Installs Apache Maven includes a resource for installing arti
 version           '5.4.2'
 source_url        'https://github.com/sous-chefs/maven'
 issues_url        'https://github.com/sous-chefs/maven/issues'
-chef_version      '>= 13'
+chef_version      '>= 15.3'
 
 depends 'ark',  '>= 1.0'
 

@@ -31,6 +31,8 @@ property :mode,         [Integer, String], default: '0644'
 property :repositories, Array, default: lazy { node['maven']['repositories'] }
 property :transitive,   [true, false], default: false
 
+unified_mode true
+
 alias_method :artifactId, :artifact_id
 alias_method :groupId, :group_id
 

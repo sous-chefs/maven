@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Enable unified_mode and require Chef >= 15.3
+- resolved cookstyle error: providers/settings.rb:48:34 convention: `Style/FileRead`
+
 ## 5.4.2 - *2021-08-30*
 
 - Standardise files with files in sous-chefs/repo-management
