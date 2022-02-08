@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- Remove delivery folder
+
 ## 6.0.0 - *2022-01-10*
 
 - Enable unified_mode and require Chef >= 15.3
