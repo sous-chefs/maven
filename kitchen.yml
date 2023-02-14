@@ -24,7 +24,7 @@ platforms:
   - name: ubuntu-20.04
 
 suites:
-  - name: resource
+  - name: default
     run_list: test::default
     provisioner:
       enforce_idempotency: false
