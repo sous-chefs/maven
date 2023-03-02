@@ -67,80 +67,8 @@ Use the put action when you want to explicitly control the name of the downloade
 
 ## Providers/Resources
 
-## maven_settings
-
-Resource provider for modifying the maven settings.
-
-### Actions
-
-Action | Description                                    | Default
------- | ---------------------------------------------- | -------
-update | Updates a global maven setting to a new value. | Yes
-
-### Attributes
-
-Attribute | Description                                                                       | Type                                | Default
---------- | --------------------------------------------------------------------------------- | ----------------------------------- | -------
-path      | Period '.' delimited path to element of the settings that is going to be changed. | String                              | name
-value     | The new value to update the path to.                                              | String, TrueClass, FalseClass, Hash |
-
-In order to use this resource you first need to run `settings` recipe which will installed required bury gems for you. Find below exampl on how to update proxy in settings.xml
-
-```ruby
-maven_settings "settings.proxies" do
-  value "proxy" => {
-    "active" => true,
-    "protocaol" => "http",
-    "host" => "proxy.myorg.com",
-    "port" => 80,
-    "nonProxyHosts" => ".myorg.com"
-  }
-end
-```
-
-### maven
-
-- `artifact_id` - if this is not specified, the resource's name is used
-- `group_id` - group_id for the artifact
-- `version` - version of the artifact
-- `dest` - the destination folder for the jar and its dependencies
-- `packaging` - defaults to 'jar'
-- `classifier` - distinguishes artifacts that were built from the same POM but differ in context
-- `repositories` - array of maven repositories to use, defaults to `["<http://repo1.maven.apache.org/maven2>"]`
-- `owner` - the owner of the resulting file, default is root
-- `group` - the group of the resulting file, default is root's group
-- `mode` - integer value for file permissions, default is 0644
-- `transitive` - whether to resolve dependencies transitively, defaults to false. Please note: Event true will only place one artifact in dest. All others are downloaded to the local repository.
-- `timeout` - sets the timeout (in seconds) of file download, default is 600
-
-#### Examples
-
-```ruby
-maven 'mysql-connector-java' do
-  group_id 'mysql'
-  version  '5.1.19'
-  dest     '/usr/local/tomcat/lib/'
-end
-# The artifact will be downloaded to /usr/local/tomcat/lib/mysql-connector-java-5.1.19.jar
-
-maven 'solr' do
-  group_id  'org.apache.solr'
-  version   '3.6.1'
-  packaging 'war'
-  dest      '/usr/local/tomcat/webapps/'
-  action    :put
-end
-# The artifact will be downloaded to /usr/local/tomcat/webapps/solr.war
-
-maven 'custom-application' do
-  group_id   'com.company.name'
-  version    '2.0.0'
-  dest       '/usr/local/tomcat/lib'
-  classifier 'client'
-  action     :put
-end
-# The artifact will be downloaded to /usr/local/tomcat/lib/custom-application-2.0.0-client.jar
-```
+- [maven](./documentation/maven.md)
+- [maven_settings](./documentation/maven_settings.md)
 
 ## Contributors
 
