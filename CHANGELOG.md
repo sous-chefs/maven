@@ -26,8 +26,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 5.4.0 (2020-11-04)
 
-### Changed
-
 - Sous Chefs Adoption
 - Update to use Sous Chefs GH workflow
 - Update README to sous-chefs
@@ -47,8 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - resolved cookstyle error: resources/default.rb:59:1 convention: `Layout/TrailingWhitespace`
 - resolved cookstyle error: resources/default.rb:28:42 refactor: `ChefCorrectness/LazyEvalNodeAttributeDefaults`
 - Yamllint fixes
-
-### Added
 
 - Add default .mdlrc
 - Add missing platforms to dokken
@@ -182,31 +178,19 @@ NOTE: This will be the last release with Maven 2 support
 
 ## v1.0.0
 
-### Improvement
-
 - **[COOK-3470](https://tickets.chef.io/browse/COOK-3470)** - Improve `/etc/mavenrc` template
 - **[COOK-3459](https://tickets.chef.io/browse/COOK-3459)** - Install Maven 3.1.0 by default
 
 ## v0.16.4
 
-### Improvement
-
 - **[COOK-3352](https://tickets.chef.io/browse/COOK-3352)** - Improve `repository_root` attribute customization
-
-### Bug
-
 - **[COOK-2799](https://tickets.chef.io/browse/COOK-2799)** - Fix idempotency in LWRP
 
 ## v0.16.2
 
 The following changes were originally released as 0.16.0, but the README incorrectly referred to the maven# recipes, which are now removed.
 
-### Task
-
 - [COOK-1874]: refactor maven default recipe to use version attributes
-
-### Bug
-
 - [COOK-2770]: maven cookbook broken for maven3 now that maven 3.0.5 has been released
 
 ## v0.15.0
