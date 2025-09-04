@@ -5,6 +5,8 @@ This file is used to list changes made in each version of the maven cookbook.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
 ## 6.0.12 - *2025-09-04*
 
 ## 6.0.11 - *2024-05-03*
