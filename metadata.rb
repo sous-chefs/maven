@@ -8,7 +8,7 @@ source_url        'https://github.com/sous-chefs/maven'
 issues_url        'https://github.com/sous-chefs/maven/issues'
 chef_version      '>= 15.3'
 
-depends 'ark',  '>= 1.0'
+depends 'ark', '>= 1.0'
 
 supports 'amazon'
 supports 'centos'
