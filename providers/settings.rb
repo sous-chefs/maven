@@ -34,8 +34,6 @@ action :update do
   end
 end
 
-private
-
 def path_value_equals?(value)
   hashed_settings = maven_settings_hash
 
@@ -60,9 +58,9 @@ def update_maven_settings
   xmlized_updated_settings = Gyoku.xml(hashed_settings)
 
   # Empty tags end up with attribute xsi:nil="true", let's clean that up
-  xmlized_updated_settings.gsub!(/xsi:nil="true"/, '')
+  xmlized_updated_settings.gsub!('xsi:nil="true"', '')
 
   file = ::File.open("#{node['maven']['m2_home']}/conf/settings.xml", 'w+')
   file.write(xmlized_updated_settings)
-  file.close()
+  file.close
 end
