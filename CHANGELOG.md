@@ -5,6 +5,13 @@ This file is used to list changes made in each version of the maven cookbook.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.13](https://github.com/sous-chefs/maven/compare/6.0.12...v6.0.13) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#176](https://github.com/sous-chefs/maven/issues/176)) ([e61af39](https://github.com/sous-chefs/maven/commit/e61af3970ef17afbcc541d45f0a1b3136f752787))
+
 ## 6.0.6 - *2023-06-08*
 
 Standardise files with files in sous-chefs/repo-management
