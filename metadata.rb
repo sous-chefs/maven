@@ -10,9 +10,9 @@ chef_version      '>= 16.0'
 
 depends 'ark', '>= 5.0'
 
-supports 'almalinux', '>= 8.0'
+supports 'almalinux', '>= 9.0'
 supports 'amazon',    '>= 2023.0'
 supports 'debian',    '>= 12.0'
 supports 'fedora'
-supports 'rocky',     '>= 8.0'
+supports 'rocky',     '>= 9.0'
 supports 'ubuntu',    '>= 22.04'

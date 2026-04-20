@@ -20,12 +20,12 @@ The cookbook installs Maven from the upstream Apache binary tarball through the
 
 The cookbook follows the platforms declared in `metadata.rb`:
 
-- AlmaLinux 8+
+- AlmaLinux 9+
 - Amazon Linux 2023+
 - Debian 12+
 - Debian 13+
 - Fedora
-- Rocky Linux 8+
+- Rocky Linux 9+
 - Ubuntu 22.04+
 
 ## Architectures

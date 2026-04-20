@@ -32,12 +32,12 @@ or come chat with us on the Chef Community Slack in
 
 The cookbook metadata currently supports:
 
-- AlmaLinux 8+
+- AlmaLinux 9+
 - Amazon Linux 2023+
 - Debian 12+
 - Debian 13+
 - Fedora
-- Rocky Linux 8+
+- Rocky Linux 9+
 - Ubuntu 22.04+
 
 ### Chef

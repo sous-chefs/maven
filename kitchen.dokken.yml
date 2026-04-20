@@ -11,11 +11,6 @@ provisioner:
   name: dokken
 
 platforms:
-  - name: almalinux-8
-    driver:
-      image: dokken/almalinux-8
-      pid_one_command: /usr/lib/systemd/systemd
-
   - name: almalinux-9
     driver:
       image: dokken/almalinux-9
@@ -39,11 +34,6 @@ platforms:
   - name: fedora-latest
     driver:
       image: dokken/fedora-latest
-      pid_one_command: /usr/lib/systemd/systemd
-
-  - name: rockylinux-8
-    driver:
-      image: dokken/rockylinux-8
       pid_one_command: /usr/lib/systemd/systemd
 
   - name: rockylinux-9
