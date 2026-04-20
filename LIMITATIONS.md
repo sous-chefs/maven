@@ -9,12 +9,12 @@ layout with an already-installed JDK.
 The cookbook installs Maven from the upstream Apache binary tarball through the
 `ark` cookbook. It does not manage distro packages.
 
-| Channel | Source | Notes |
-|---------|--------|-------|
-| Binary tarball | <https://archive.apache.org/dist/maven/> | Canonical source for released versions |
-| Binary tarball (current) | <https://dlcdn.apache.org/maven/> | Current releases only |
-| Debian/Ubuntu `apt` | `maven` package | Not used by this cookbook |
-| RHEL/Fedora `dnf` | `maven` package | Not used by this cookbook |
+| Channel                  | Source                                   | Notes                                  |
+|--------------------------|------------------------------------------|----------------------------------------|
+| Binary tarball           | <https://archive.apache.org/dist/maven/> | Canonical source for released versions |
+| Binary tarball (current) | <https://dlcdn.apache.org/maven/>        | Current releases only                  |
+| Debian/Ubuntu `apt`      | `maven` package                          | Not used by this cookbook              |
+| RHEL/Fedora `dnf`        | `maven` package                          | Not used by this cookbook              |
 
 ## Supported platforms
 
