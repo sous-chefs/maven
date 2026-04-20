@@ -11,6 +11,8 @@ describe 'maven_install' do
       maven_install 'default'
     end
 
+    it { is_expected.to install_package('tar') }
+
     it do
       expect(chef_run).to install_ark('maven').with(
         version: '3.9.14',

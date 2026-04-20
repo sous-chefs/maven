@@ -64,6 +64,8 @@ action :install do
     end
   end
 
+  package 'tar'
+
   ark 'maven' do
     version new_resource.version
     url new_resource.url || default_tarball_url(new_resource.version)

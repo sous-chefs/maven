@@ -4,7 +4,8 @@ apt_update 'update' if platform_family?('debian')
 
 package value_for_platform_family(
   'amazon' => 'java-17-amazon-corretto-headless',
-  %w(rhel fedora) => 'java-17-openjdk-headless',
+  'fedora' => 'java-latest-openjdk-headless',
+  'rhel' => 'java-17-openjdk-headless',
   'debian' => 'default-jdk-headless'
 )
 
