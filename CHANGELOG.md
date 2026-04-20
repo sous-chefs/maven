@@ -5,6 +5,24 @@ This file is used to list changes made in each version of the maven cookbook.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.0](https://github.com/sous-chefs/maven/compare/v6.0.13...v7.0.0) (2026-04-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate maven to custom resources ([#179](https://github.com/sous-chefs/maven/issues/179))
+
+### Features
+
+* migrate maven to custom resources ([#179](https://github.com/sous-chefs/maven/issues/179)) ([3c2f3b4](https://github.com/sous-chefs/maven/commit/3c2f3b4be6d3f740ccf015ebc526e208e252d7ac))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#176](https://github.com/sous-chefs/maven/issues/176)) ([e61af39](https://github.com/sous-chefs/maven/commit/e61af3970ef17afbcc541d45f0a1b3136f752787))
+* restore cookbook release workflow ([febee91](https://github.com/sous-chefs/maven/commit/febee9166f07acace63ef40d57b9e025f5ce3409))
+* update cookbook release workflow ([f0fe7b3](https://github.com/sous-chefs/maven/commit/f0fe7b30382534f07947254182ed5d643eedfba8))
+
 ## [6.0.13](https://github.com/sous-chefs/maven/compare/6.0.12...v6.0.13) (2025-10-15)
 
 
