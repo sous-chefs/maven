@@ -5,6 +5,13 @@ This file is used to list changes made in each version of the maven cookbook.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [7.0.1](https://github.com/sous-chefs/maven/compare/v7.0.0...v7.0.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* preserve destination directory permissions ([#184](https://github.com/sous-chefs/maven/issues/184)) ([a2495d6](https://github.com/sous-chefs/maven/commit/a2495d6ae1a942772a712d86f9e4399a751f13e7))
+
 ## [7.0.0](https://github.com/sous-chefs/maven/compare/v6.0.13...v7.0.0) (2026-04-20)
 
 
