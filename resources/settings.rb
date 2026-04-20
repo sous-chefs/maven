@@ -1,28 +1,47 @@
-#
-# Cookbook:: maven
-# Resource:: default
-#
-# Author:: Pushkar Raste <praste@bloomberg.net, pushkar.raste@gmail.com>
-# Copyright:: 2014-2019, Bloomberg Inc.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+# frozen_string_literal: true
 
-# This is inspired by settings provider in https://github.com/RiotGames/nexus-cookbook
+provides :maven_settings
+unified_mode true
+
+description 'Update a value in a Maven settings.xml file by dotted path.'
+
+property :path, String,
+         name_property: true,
+         description: 'Dotted path of the setting to update (e.g. "settings.localRepository").'
+
+property :value, [String, TrueClass, FalseClass, Hash],
+         required: true,
+         description: 'Value to set at the given path.'
+
+property :settings_file, String,
+         default: '/usr/local/maven/conf/settings.xml',
+         description: 'Absolute path to the settings.xml file.'
 
 default_action :update
 
-attribute :path, kind_of: String, name_attribute: true
-attribute :value, kind_of: [String, TrueClass, FalseClass, Hash], required: true
+action :update do
+  chef_gem 'nori' do
+    compile_time true
+  end
 
-unified_mode true
+  chef_gem 'gyoku' do
+    compile_time true
+  end
+
+  require 'nori'
+  require 'gyoku'
+
+  settings_file = new_resource.settings_file
+  current = Nori.new(parser: :rexml).parse(::File.read(settings_file))
+
+  *path_elements, key = new_resource.path.split('.')
+  container = path_elements.inject(current, :fetch)
+
+  if container[key] != new_resource.value
+    converge_by "update #{new_resource.path} in #{settings_file}" do
+      container[key] = new_resource.value
+      xml = Gyoku.xml(current).gsub('xsi:nil="true"', '')
+      ::File.write(settings_file, xml)
+    end
+  end
+end

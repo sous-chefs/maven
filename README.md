@@ -6,69 +6,107 @@
 [![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Install and configure Apache Maven from the binaries provided by the Maven project.
+Custom resources for installing Apache Maven, downloading Maven artifacts, and
+editing `settings.xml`.
 
-Provides the `maven` resource for pulling a maven artifact from a maven repository and placing it in an arbitrary location.
+Use the custom resources directly:
 
-Note: This cookbook does not handle the installation of Java but does require it to be installed. This can be done either using the [Java cookbook](https://supermarket.chef.io/cookbooks/java) or your own cookbook. Check the [Maven website](https://maven.apache.org/docs/history.html) for more information about explicit Java requirements.
+- `maven_install`
+- `maven_artifact`
+- `maven_settings`
+
+This cookbook does not install Java. Ensure a compatible JDK is present before
+using the `mvn` binary or `maven_artifact`.
 
 ## Maintainers
 
-This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of Chef cookbook maintainers working together to maintain important cookbooks. If you’d like to know more please visit [sous-chefs.org](https://sous-chefs.org/) or come chat with us on the Chef Community Slack in [#sous-chefs](https://chefcommunity.slack.com/messages/C2V7B88SF).
+This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community
+of Chef cookbook maintainers working together to maintain important cookbooks.
+If you'd like to know more please visit [sous-chefs.org](https://sous-chefs.org/)
+or come chat with us on the Chef Community Slack in
+[#sous-chefs](https://chefcommunity.slack.com/messages/C2V7B88SF).
 
 ## Requirements
 
 ### Platforms
 
-- Debian/Ubuntu
-- RHEL/CentOS/Scientific/Amazon/Oracle
+The cookbook metadata currently supports:
+
+- AlmaLinux 8+
+- Amazon Linux 2023+
+- Debian 12+
+- Debian 13+
 - Fedora
-- Windows
+- Rocky Linux 8+
+- Ubuntu 22.04+
 
 ### Chef
 
-- Chef 13+
+- Chef Infra Client 16+
 
 ### Cookbooks
 
-- ark - used to unpack the maven tarball
+- `ark` 5.0+
 
-## Attributes
+## Resource Overview
 
-- `node['maven']['version']` - specifies the version of maven to install.
-- `node['maven']['m2_home']` - defaults to '/usr/local/maven/'
-- `node['maven']['url']` - the download url for maven
-- `node['maven']['checksum']` - the checksum, which you will have to recalculate if you change the download url using `shasum -a 256 FILENAME`
-- `node['maven']['repositories']` - an array of maven repositories to use; must be specified as an array. Used in the maven LWRP.
-- `node['maven']['setup_bin']` - whether or not to put mvn on your system path, defaults to false
-- `node['maven']['mavenrc']['opts']` - value of `MAVEN_OPTS` environment variable exported via `/etc/mavenrc` template, defaults to `-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m`
-- `node['maven']['user']` - User to own Maven install, defaults to `root` or `Administrator` depending on platform.
-- `node['maven']['group']` - Group to own Maven install, defaults to `root` or `Administrators` depending on platform.
+### `maven_install`
 
-## Recipes
+Installs Apache Maven from the upstream binary tarball, manages the Maven home,
+and writes a `mavenrc` file with `M2_HOME` and `MAVEN_OPTS`.
 
-### default
+```ruby
+maven_install 'default' do
+  version '3.9.14'
+end
+```
 
-Installs maven according to the version specified by the `node['maven']['version']` attribute.
+### `maven_artifact`
 
-### settings
+Downloads an artifact from one or more remote repositories by invoking the
+Maven dependency plugin through `mvn`.
 
-Installs gems required to parse settings.xml to ruby and hash and back to xml
+```ruby
+maven_artifact 'mysql-connector-j' do
+  group_id 'com.mysql'
+  version '8.4.0'
+  dest '/opt/app/lib'
+end
+```
+
+### `maven_settings`
+
+Updates a value in an existing `settings.xml` file by dotted path.
+
+```ruby
+maven_settings 'settings.localRepository' do
+  value '/srv/maven-repository'
+end
+```
 
 ## Usage
 
-Install a version of Java JRE (Oracle or OpenJDK) that is at minimum the version of Java required by the [maven release you are installing](https://maven.apache.org/docs/history.html). This can be done either using the [Java cookbook](https://supermarket.chef.io/cookbooks/java) or your own cookbook.
+Install a supported JDK first, then declare the resources you need in your own
+wrapper cookbook. A typical flow is:
 
-Include the recipe where you want Apache Maven installed.
+1. Install Java with your preferred cookbook or base image.
+2. Use `maven_install` to place Maven on the node.
+3. Use `maven_settings` to adjust `settings.xml` if needed.
+4. Use `maven_artifact` to fetch application dependencies or deployment assets.
 
-The maven lwrp has two actions, `:install` and `:put`. They are essentially the same accept that the install action will name the the downloaded file `artifact_id-version.packaging`. For example, the mysql jar would be named mysql-5.1.19.jar.
+See `test/cookbooks/test/recipes/default.rb` for the full default-suite example
+that exercises all three resources together.
 
-Use the put action when you want to explicitly control the name of the downloaded file. This is useful when you download an artifact and then want to have Chef resources act on files within that the artifact. The put action will creat a file named `name.packaging` where name corresponds to the name attribute.
+## Resource Documentation
 
-## Providers/Resources
-
-- [maven](./documentation/maven.md)
+- [maven_install](./documentation/maven_install.md)
+- [maven_artifact](./documentation/maven_artifact.md)
 - [maven_settings](./documentation/maven_settings.md)
+
+## Limitations
+
+See [LIMITATIONS.md](./LIMITATIONS.md) for supported platforms, architecture
+notes, and current behavioral constraints of the resources.
 
 ## Contributors
 
@@ -82,7 +120,8 @@ Thank you to all our backers!
 
 ### Sponsors
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+Support this project by becoming a sponsor. Your logo will show up here with a
+link to your website.
 
 ![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
 ![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
