@@ -88,6 +88,7 @@ action_class do
           directory new_resource.dest do
             recursive true
             mode '0755'
+            not_if { ::Dir.exist?(new_resource.dest) }
           end.run_action(:create)
 
           FileUtils.cp(tmp_file, dest_file, preserve: true)
