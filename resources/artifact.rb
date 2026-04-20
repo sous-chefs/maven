@@ -117,10 +117,11 @@ action_class do
     dest_dir = new_resource.dest
     dest_file = ::File.join(dest_dir, file_name)
 
-    directory dest_dir do
-      recursive true
-      mode '0755'
-      action :create
+    ruby_block "create destination directory #{dest_dir}" do
+      block do
+        FileUtils.mkdir_p(dest_dir)
+      end
+      not_if { ::Dir.exist?(dest_dir) }
     end
 
     shell_out!(mvn_command, timeout: new_resource.timeout)
