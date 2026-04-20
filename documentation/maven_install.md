@@ -5,26 +5,26 @@ environment file used to expose `M2_HOME` and `MAVEN_OPTS`.
 
 ## Actions
 
-| Action | Description |
-|--------|-------------|
-| `:install` | Install Maven and write the `mavenrc` file. Default action. |
-| `:remove` | Remove the `mavenrc` file, install directory, and `/usr/local/bin/mvn` symlink if present. |
+| Action     | Description                                                                                |
+|------------|--------------------------------------------------------------------------------------------|
+| `:install` | Install Maven and write the `mavenrc` file. Default action.                                |
+| `:remove`  | Remove the `mavenrc` file, install directory, and `/usr/local/bin/mvn` symlink if present. |
 
 ## Properties
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `install_name` | String | name property | Identifier for the installation. |
-| `version` | String | `'3.9.14'` | Apache Maven version to install. |
-| `url` | String | `nil` | Override URL for the Maven binary tarball. |
-| `checksum` | String | `nil` | SHA256 checksum for the tarball. Provide this when overriding `url`. |
-| `install_dir` | String | `'/usr/local/maven'` | Directory where Maven is installed. |
-| `user` | String | `'root'` | Owner of the install directory and `mavenrc` file. |
-| `group` | String | `'root'` | Group owner of the install directory and `mavenrc` file. |
-| `mavenrc_path` | String | `'/etc/mavenrc'` | Path to the environment file that exports `M2_HOME` and `MAVEN_OPTS`. |
-| `maven_opts` | String | `'-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m'` | Value written to `MAVEN_OPTS`. |
-| `manage_user` | TrueClass, FalseClass | `false` | Create the `user` and `group` if they do not already exist. |
-| `append_env_path` | TrueClass, FalseClass | `true` | Expose `mvn` on the system `PATH` via `/usr/local/bin/mvn`. |
+| Property          | Type                  | Default                                              | Description                                                           |
+|-------------------|-----------------------|------------------------------------------------------|-----------------------------------------------------------------------|
+| `install_name`    | String                | name property                                        | Identifier for the installation.                                      |
+| `version`         | String                | `'3.9.14'`                                           | Apache Maven version to install.                                      |
+| `url`             | String                | `nil`                                                | Override URL for the Maven binary tarball.                            |
+| `checksum`        | String                | `nil`                                                | SHA256 checksum for the tarball. Provide this when overriding `url`.  |
+| `install_dir`     | String                | `'/usr/local/maven'`                                 | Directory where Maven is installed.                                   |
+| `user`            | String                | `'root'`                                             | Owner of the install directory and `mavenrc` file.                    |
+| `group`           | String                | `'root'`                                             | Group owner of the install directory and `mavenrc` file.              |
+| `mavenrc_path`    | String                | `'/etc/mavenrc'`                                     | Path to the environment file that exports `M2_HOME` and `MAVEN_OPTS`. |
+| `maven_opts`      | String                | `'-Dmaven.repo.local=$HOME/.m2/repository -Xmx384m'` | Value written to `MAVEN_OPTS`.                                        |
+| `manage_user`     | TrueClass, FalseClass | `false`                                              | Create the `user` and `group` if they do not already exist.           |
+| `append_env_path` | TrueClass, FalseClass | `true`                                               | Expose `mvn` on the system `PATH` via `/usr/local/bin/mvn`.           |
 
 ## Examples
 
