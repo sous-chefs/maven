@@ -105,7 +105,7 @@ that exercises all three resources together.
 
 ## Limitations
 
-See [LIMITATIONS.md](./LIMITATIONS.md) for supported platforms, architecture
+See [AGENTS.md](./AGENTS.md) for supported platforms, architecture
 notes, and current behavioral constraints of the resources.
 
 ## Contributors
