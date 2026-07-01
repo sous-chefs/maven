@@ -1,4 +1,15 @@
-# Limitations
+# AGENTS.md
+
+## Cookbook Purpose
+
+Custom resources for installing Apache Maven and downloading Maven artifacts
+
+## Agent Findings
+
+* This cookbook is in an incremental modernization pass. Preserve existing public recipes and attributes unless a later full migration is explicitly selected.
+* Dependency management should use `Policyfile.rb`; do not reintroduce Berkshelf.
+
+## Known Limitations
 
 Apache Maven is a Java build tool distributed by the Apache Software Foundation.
 This cookbook manages Maven through custom resources and assumes a Linux/Unix

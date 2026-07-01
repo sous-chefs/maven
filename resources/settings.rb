@@ -29,7 +29,11 @@ action :update do
   end
 
   require 'nori'
-  require 'gyoku'
+  begin
+    require 'gyoku'
+  rescue LoadError
+    require 'chef-gyoku'
+  end
 
   settings_file = new_resource.settings_file
   current = Nori.new(parser: :rexml).parse(::File.read(settings_file))
