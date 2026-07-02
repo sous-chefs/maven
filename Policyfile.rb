@@ -2,6 +2,8 @@
 
 name 'maven'
 
+default_source :supermarket
+
 run_list 'test::default'
 
 cookbook 'maven', path: '.'
