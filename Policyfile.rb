@@ -7,8 +7,6 @@ default_source :supermarket
 run_list 'test::default'
 
 cookbook 'maven', path: '.'
-cookbook 'ark', git: 'https://github.com/sous-chefs/ark.git', branch: 'main'
-cookbook 'seven_zip', git: 'https://github.com/sous-chefs/seven_zip.git', branch: 'main'
 cookbook 'test', path: './test/cookbooks/test'
 
 Dir.children('./test/cookbooks/test/recipes').grep(/\.rb\z/).sort.each do |recipe|
